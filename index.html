@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,277 +8,270 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0A0F1E;
-    --navy-card: #111827;
-    --navy-mid: #1A2240;
-    --electric: #4A7FFF;
-    --teal: #00D4A8;
-    --amber: #FFB347;
-    --purple: #E879F9;
-    --white: #F0F4FF;
-    --muted: #8892AA;
-    --border: rgba(74,127,255,0.15);
+    --navy:#0A0F1E; --card:#111827; --mid:#1A2240;
+    --blue:#4A7FFF; --teal:#00D4A8; --amber:#FFB347; --purple:#E879F9;
+    --white:#F0F4FF; --muted:#8892AA; --border:rgba(74,127,255,0.15);
   }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--white);line-height:1.6;overflow-x:hidden;}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+  /* ── LANG TOGGLE ── */
+  .lang-bar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:flex-end;padding:0.6rem 1.5rem;background:rgba(10,15,30,0.95);border-bottom:1px solid var(--border);}
+  .lang-btn{padding:0.3rem 0.9rem;border-radius:100px;font-size:0.75rem;font-weight:700;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all 0.2s;letter-spacing:0.05em;}
+  .lang-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);}
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.2rem 2rem;
-    background: rgba(10,15,30,0.9); backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo { font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); letter-spacing: -0.02em; text-decoration: none; }
-  .nav-logo span { color: var(--teal); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--electric); }
+  /* ── NAV ── */
+  nav{position:fixed;top:2.4rem;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(10,15,30,0.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:'DM Sans',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);text-decoration:none;letter-spacing:-0.02em;}
+  .nav-logo span{color:var(--teal);}
+  .nav-links{display:flex;gap:1.8rem;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.78rem;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--blue);}
 
-  /* HERO */
-  .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 80% 60% at 65% 40%, rgba(74,127,255,0.09) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 15% 75%, rgba(0,212,168,0.07) 0%, transparent 60%); }
-  .grid-overlay { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(74,127,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(74,127,255,0.035) 1px, transparent 1px); background-size: 60px 60px; }
-  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
+  /* ── HERO ── */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:9rem 2rem 4rem;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 65% 40%,rgba(74,127,255,0.09) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 15% 75%,rgba(0,212,168,0.07) 0%,transparent 60%);}
+  .grid-bg{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(74,127,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(74,127,255,0.03) 1px,transparent 1px);background-size:60px 60px;}
+  .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.5rem;}
+  .eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--teal);}
+  h1{font-family:'DM Sans',sans-serif;font-size:clamp(2.6rem,4.5vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.5rem;}
+  h1 em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero-sub{color:var(--muted);font-size:1rem;font-weight:300;line-height:1.75;margin-bottom:2.5rem;max-width:480px;}
+  .hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-p{padding:0.82rem 1.8rem;background:var(--blue);color:#fff;font-weight:600;font-size:0.86rem;border:none;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
+  .btn-p:hover{background:#3a6fe8;transform:translateY(-1px);box-shadow:0 8px 24px rgba(74,127,255,0.3);}
+  .btn-g{padding:0.82rem 1.8rem;background:transparent;color:var(--white);font-weight:500;font-size:0.86rem;border:1px solid var(--border);border-radius:6px;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.2s;}
+  .btn-g:hover{border-color:var(--blue);color:var(--blue);}
 
-  .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; }
-  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--teal); }
+  /* ── HERO STATS ── */
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .sc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.4rem;transition:border-color 0.2s,transform 0.2s;}
+  .sc:hover{border-color:var(--blue);transform:translateY(-2px);}
+  .sc.wide{grid-column:1/-1;background:linear-gradient(135deg,#0F1A35,#111827);}
+  .sn{font-family:'DM Sans',sans-serif;font-size:2.5rem;font-weight:900;line-height:1;letter-spacing:-0.03em;color:var(--blue);margin-bottom:0.35rem;}
+  .sn.t{color:var(--teal);}
+  .sl{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;font-weight:500;}
+  .sd{font-size:0.8rem;color:var(--white);margin-top:0.4rem;font-weight:300;}
 
-  h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(2.6rem, 4.5vw, 4rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
-  h1 em { font-style: normal; background: linear-gradient(135deg, var(--electric), var(--teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  /* ── COMMON ── */
+  section{padding:5.5rem 2rem;}
+  .container{max-width:1100px;margin:0 auto;}
+  .sec-eye{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem;}
+  .sec-eye::before{content:'';display:block;width:32px;height:1px;background:var(--teal);}
+  h2{font-family:'DM Sans',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-0.025em;line-height:1.1;margin-bottom:1rem;}
+  .sec-sub{color:var(--muted);font-size:0.95rem;font-weight:300;max-width:560px;line-height:1.7;}
 
-  .hero-sub { color: var(--muted); font-size: 1.05rem; font-weight: 300; line-height: 1.75; margin-bottom: 2.5rem; max-width: 480px; }
-  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  /* ── FILOSOFÍA ── */
+  .philosophy{background:var(--card);}
+  .phil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+  .pillar{border:1px solid var(--border);border-radius:12px;padding:1.8rem;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
+  .pillar:hover{border-color:var(--blue);transform:translateY(-3px);}
+  .pillar::before{content:attr(data-n);position:absolute;top:-0.5rem;right:1rem;font-family:'DM Sans',sans-serif;font-size:4.5rem;font-weight:900;color:rgba(74,127,255,0.05);line-height:1;pointer-events:none;}
+  .pillar-icon{font-size:1.6rem;margin-bottom:0.9rem;display:block;}
+  .pillar h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;margin-bottom:0.6rem;}
+  .pillar p{font-size:0.86rem;color:var(--muted);line-height:1.7;}
 
-  .btn-primary { padding: 0.85rem 2rem; background: var(--electric); color: white; font-weight: 600; font-size: 0.88rem; border: none; border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
-  .btn-primary:hover { background: #3a6fe8; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(74,127,255,0.3); }
-  .btn-ghost { padding: 0.85rem 2rem; background: transparent; color: var(--white); font-weight: 500; font-size: 0.88rem; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
-  .btn-ghost:hover { border-color: var(--electric); color: var(--electric); }
+  /* ── MVP CARDS ── */
+  .mvp-grid{display:grid;gap:1.5rem;margin-top:3rem;}
+  .mvp{background:var(--card);border:1px solid var(--border);border-radius:16px;display:grid;grid-template-columns:260px 1fr;overflow:hidden;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;}
+  .mvp:hover{border-color:rgba(74,127,255,0.4);transform:translateY(-3px);box-shadow:0 20px 40px rgba(0,0,0,0.4);}
+  .mvp-side{padding:1.8rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:1rem;background:linear-gradient(180deg,#0D1525,#0A0F1E);}
+  .mvp-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;}
+  .badge{display:inline-flex;align-items:center;gap:0.4rem;padding:0.3rem 0.75rem;border-radius:100px;font-size:0.7rem;font-weight:600;width:fit-content;}
+  .b-prod{background:rgba(0,212,168,0.1);border:1px solid rgba(0,212,168,0.25);color:var(--teal);}
+  .b-dev{background:rgba(255,179,71,0.1);border:1px solid rgba(255,179,71,0.25);color:var(--amber);}
+  .b-res{background:rgba(232,121,249,0.1);border:1px solid rgba(232,121,249,0.25);color:var(--purple);}
+  .mvp-title{font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;line-height:1.3;}
+  .mvp-meta{margin-top:auto;display:flex;flex-direction:column;gap:0.6rem;}
+  .meta-r{display:flex;flex-direction:column;gap:0.2rem;}
+  .meta-l{font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
+  .meta-v{font-size:0.8rem;color:var(--white);}
+  .mvp-body{padding:1.8rem;display:flex;flex-direction:column;gap:1.3rem;}
+  .blk-label{font-family:'DM Mono',monospace;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem;}
+  .lbl-p{color:var(--muted);}
+  .lbl-s{color:var(--blue);}
+  .blk-text{font-size:0.87rem;line-height:1.7;}
+  .blk-text.m{color:var(--muted);}
+  .blk-text.w{color:var(--white);}
+  .tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
+  .tag{display:inline-flex;align-items:center;gap:0.3rem;padding:0.27rem 0.7rem;border-radius:100px;font-size:0.7rem;font-weight:500;}
+  .tag-b{background:rgba(74,127,255,0.08);border:1px solid rgba(74,127,255,0.2);color:var(--blue);}
+  .tag-g{background:rgba(0,212,168,0.08);border:1px solid rgba(0,212,168,0.2);color:var(--teal);}
+  .tag-a{background:rgba(255,179,71,0.08);border:1px solid rgba(255,179,71,0.2);color:var(--amber);}
+  .mvp-footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.6rem;padding-top:1rem;border-top:1px solid var(--border);}
+  .chips{display:flex;gap:0.35rem;flex-wrap:wrap;}
+  .chip{padding:0.18rem 0.55rem;background:rgba(255,255,255,0.05);border-radius:4px;font-size:0.65rem;color:var(--muted);font-family:'DM Mono',monospace;}
+  .yr{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);}
 
-  /* HERO STATS */
-  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .stat-card { background: var(--navy-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
-  .stat-card:hover { border-color: var(--electric); transform: translateY(-2px); }
-  .stat-card.wide { grid-column: 1 / -1; background: linear-gradient(135deg, #0F1A35, #111827); }
-  .stat-num { font-family: 'DM Sans', sans-serif; font-size: 2.6rem; font-weight: 900; line-height: 1; letter-spacing: -0.03em; color: var(--electric); margin-bottom: 0.4rem; }
-  .stat-num.teal { color: var(--teal); }
-  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
-  .stat-desc { font-size: 0.82rem; color: var(--white); margin-top: 0.4rem; font-weight: 300; }
+  /* ── EBOOK / IA PROJECT ── */
+  .ebook-section{background:var(--card);}
+  .ebook-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem;align-items:start;}
+  .ebook-card{border:1px solid rgba(232,121,249,0.2);border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#0D0F1E,#130D1F);}
+  .ebook-header{padding:1.5rem 2rem;background:rgba(232,121,249,0.06);border-bottom:1px solid rgba(232,121,249,0.15);}
+  .ebook-cat{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--purple);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.6rem;}
+  .ebook-title{font-family:'DM Sans',sans-serif;font-size:1.4rem;font-weight:900;letter-spacing:-0.02em;line-height:1.2;margin-bottom:0.4rem;}
+  .ebook-sub{font-size:0.82rem;color:var(--muted);line-height:1.6;}
+  .ebook-body{padding:1.5rem 2rem;}
+  .ebook-insight{display:flex;gap:0.75rem;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .ebook-insight:last-child{border-bottom:none;}
+  .ins-icon{font-size:1.1rem;flex-shrink:0;padding-top:0.1rem;}
+  .ins-title{font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:0.2rem;}
+  .ins-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+  .ebook-right h3{font-family:'DM Sans',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:1rem;}
+  .ebook-right p{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+  .quote-block{border-left:3px solid var(--purple);padding:1rem 1.25rem;background:rgba(232,121,249,0.04);border-radius:0 8px 8px 0;margin:1.25rem 0;}
+  .quote-block p{font-style:italic;color:var(--white);font-size:0.92rem;margin-bottom:0.4rem;}
+  .quote-src{font-size:0.7rem;color:var(--purple);font-family:'DM Mono',monospace;}
+  .pill-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.2rem;}
+  .pill{padding:0.3rem 0.8rem;background:rgba(232,121,249,0.08);border:1px solid rgba(232,121,249,0.2);border-radius:100px;font-size:0.72rem;color:var(--purple);}
 
-  /* SECTIONS */
-  section { padding: 6rem 2rem; }
-  .container { max-width: 1100px; margin: 0 auto; }
-  .section-eye { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--teal); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.75rem; }
-  .section-eye::before { content: ''; display: block; width: 32px; height: 1px; background: var(--teal); }
-  h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 1rem; }
-  .section-sub { color: var(--muted); font-size: 1rem; font-weight: 300; max-width: 560px; line-height: 1.7; }
+  /* ── PROCESO ── */
+  .process{background:var(--navy);}
+  .proc-flow{display:grid;grid-template-columns:repeat(5,1fr);margin-top:3rem;position:relative;}
+  .proc-flow::before{content:'';position:absolute;top:2.6rem;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--blue),var(--teal),var(--blue),transparent);opacity:0.2;}
+  .step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 0.4rem;position:relative;z-index:1;}
+  .dot{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:0.9rem;border:2px solid var(--border);background:var(--navy);transition:border-color 0.3s,transform 0.3s;}
+  .step:hover .dot{border-color:var(--blue);transform:scale(1.1);}
+  .step h4{font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:700;margin-bottom:0.35rem;}
+  .step p{font-size:0.74rem;color:var(--muted);line-height:1.5;}
 
-  /* FILOSOFÍA */
-  .philosophy { background: var(--navy-card); }
-  .philosophy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-  .pillar { border: 1px solid var(--border); border-radius: 12px; padding: 2rem; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
-  .pillar:hover { border-color: var(--electric); transform: translateY(-3px); }
-  .pillar::before { content: attr(data-num); position: absolute; top: -0.5rem; right: 1rem; font-family: 'DM Sans', sans-serif; font-size: 5rem; font-weight: 900; color: rgba(74,127,255,0.05); line-height: 1; pointer-events: none; }
-  .pillar-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
-  .pillar h3 { font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; }
-  .pillar p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+  /* BACKLOG */
+  .bl-split{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:4rem;}
+  .bl-left h3{font-family:'DM Sans',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:0.9rem;}
+  .bl-left p{color:var(--muted);font-size:0.87rem;line-height:1.8;margin-bottom:0.8rem;}
+  .ev-list{list-style:none;margin-top:0.8rem;}
+  .ev-list li{display:flex;align-items:flex-start;gap:0.6rem;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.83rem;color:var(--muted);}
+  .ev-list li:last-child{border-bottom:none;}
+  .ev-list li::before{content:'→';color:var(--blue);flex-shrink:0;}
+  .bl-viz{background:var(--navy);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .bl-hd{padding:0.85rem 1.2rem;background:var(--mid);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+  .bl-t{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--teal);}
+  .sp-badge{padding:0.18rem 0.6rem;background:rgba(74,127,255,0.1);border:1px solid rgba(74,127,255,0.2);border-radius:100px;font-size:0.62rem;color:var(--blue);font-family:'DM Mono',monospace;}
+  .bl-items{padding:0.7rem;}
+  .bi{display:flex;align-items:center;gap:0.8rem;padding:0.6rem 0.45rem;border-radius:6px;font-size:0.78rem;color:var(--muted);transition:background 0.15s;}
+  .bi:hover{background:rgba(255,255,255,0.025);}
+  .pr{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+  .p1{background:#FF5B5B;} .p2{background:var(--amber);} .p3{background:var(--teal);}
+  .bid{font-family:'DM Mono',monospace;font-size:0.62rem;color:rgba(136,146,170,0.4);flex-shrink:0;width:54px;}
+  .bs{flex:1;color:var(--white);font-size:0.76rem;}
+  .bpt{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--blue);}
+  .bst{padding:0.1rem 0.4rem;border-radius:4px;font-size:0.58rem;font-family:'DM Mono',monospace;flex-shrink:0;}
+  .done{background:rgba(0,212,168,0.1);color:var(--teal);}
+  .wip{background:rgba(74,127,255,0.1);color:var(--blue);}
+  .todo{background:rgba(136,146,170,0.07);color:var(--muted);}
 
-  /* MVP CARDS */
-  .mvp-grid { display: grid; gap: 1.5rem; margin-top: 3rem; }
+  /* TOOLS */
+  .tools{background:var(--card);}
+  .tg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:3rem;}
+  .tg{border:1px solid var(--border);border-radius:10px;padding:1.4rem;}
+  .tg-lbl{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--teal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.9rem;}
+  .ti{display:flex;align-items:center;gap:0.45rem;padding:0.35rem 0;font-size:0.82rem;color:var(--muted);border-bottom:1px solid rgba(255,255,255,0.04);}
+  .ti:last-child{border-bottom:none;}
+  .ti::before{content:'·';color:var(--blue);}
 
-  .mvp-card {
-    background: var(--navy-card);
-    border: 1px solid var(--border); border-radius: 16px;
-    display: grid; grid-template-columns: 280px 1fr; gap: 0;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
-  .mvp-card:hover { border-color: rgba(74,127,255,0.4); transform: translateY(-3px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+  /* CONTACT */
+  .contact{text-align:center;padding:5.5rem 2rem;background:linear-gradient(180deg,var(--navy) 0%,#050810 100%);}
+  .ct-card{max-width:560px;margin:2.5rem auto 0;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;}
+  .ct-info{display:flex;flex-direction:column;gap:0.85rem;margin-bottom:1.8rem;text-align:left;}
+  .ct-line{display:flex;align-items:center;gap:1rem;font-size:0.86rem;color:var(--muted);}
+  .ct-line span:first-child{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--blue);width:76px;flex-shrink:0;}
+  .avail{display:inline-flex;align-items:center;gap:0.45rem;padding:0.4rem 1rem;background:rgba(0,212,168,0.08);border:1px solid rgba(0,212,168,0.2);border-radius:100px;font-size:0.76rem;color:var(--teal);margin-bottom:1.8rem;}
+  .avail::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
 
-  .mvp-sidebar {
-    padding: 2rem;
-    border-right: 1px solid var(--border);
-    display: flex; flex-direction: column; gap: 1.2rem;
-    background: linear-gradient(180deg, #0D1525, #0A0F1E);
-  }
-
-  .mvp-num {
-    font-family: 'DM Mono', monospace; font-size: 0.68rem;
-    color: var(--muted); letter-spacing: 0.1em;
-  }
-
-  .mvp-sector-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.35rem 0.8rem;
-    border-radius: 100px; font-size: 0.72rem; font-weight: 600;
-    width: fit-content;
-  }
-  .badge-kc { background: rgba(74,127,255,0.12); border: 1px solid rgba(74,127,255,0.25); color: var(--electric); }
-  .badge-prod { background: rgba(0,212,168,0.1); border: 1px solid rgba(0,212,168,0.25); color: var(--teal); }
-  .badge-dev { background: rgba(255,179,71,0.1); border: 1px solid rgba(255,179,71,0.25); color: var(--amber); }
-
-  .mvp-sidebar-title {
-    font-family: 'DM Sans', sans-serif; font-size: 1.15rem;
-    font-weight: 800; letter-spacing: -0.02em; line-height: 1.3;
-  }
-
-  .mvp-meta { margin-top: auto; }
-  .mvp-meta-row { display: flex; flex-direction: column; gap: 0.3rem; }
-  .mvp-meta-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
-  .mvp-meta-val { font-size: 0.82rem; color: var(--white); }
-
-  .mvp-body { padding: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
-
-  .mvp-problem { }
-  .mvp-problem-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-  .mvp-problem p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
-
-  .mvp-solution { }
-  .mvp-solution-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--electric); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
-  .mvp-solution p { font-size: 0.9rem; color: var(--white); line-height: 1.7; }
-
-  .mvp-outcomes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .outcome-tag { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0.75rem; background: rgba(74,127,255,0.08); border: 1px solid rgba(74,127,255,0.2); border-radius: 100px; font-size: 0.72rem; color: var(--electric); font-weight: 500; }
-  .outcome-tag.green { background: rgba(0,212,168,0.08); border-color: rgba(0,212,168,0.2); color: var(--teal); }
-  .outcome-tag.amber { background: rgba(255,179,71,0.08); border-color: rgba(255,179,71,0.2); color: var(--amber); }
-
-  .mvp-footer-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-  .mvp-tools { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-  .tool-chip { padding: 0.2rem 0.6rem; background: rgba(255,255,255,0.05); border-radius: 4px; font-size: 0.68rem; color: var(--muted); font-family: 'DM Mono', monospace; }
-  .mvp-year { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); }
-
-  /* PROCESO */
-  .process { background: var(--navy-card); }
-  .process-flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 3rem; position: relative; }
-  .process-flow::before { content: ''; position: absolute; top: 2.8rem; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--electric), var(--teal), var(--electric), transparent); opacity: 0.25; }
-  .step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 0.5rem; position: relative; z-index: 1; }
-  .step-dot { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 1rem; border: 2px solid var(--border); background: var(--navy); transition: border-color 0.3s, transform 0.3s; }
-  .step:hover .step-dot { border-color: var(--electric); transform: scale(1.1); }
-  .step h4 { font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 700; margin-bottom: 0.4rem; }
-  .step p { font-size: 0.76rem; color: var(--muted); line-height: 1.5; }
-
-  /* BACKLOG VISUAL */
-  .backlog-section { }
-  .backlog-split { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 3rem; }
-  .backlog-left h3 { font-family: 'DM Sans', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
-  .backlog-left p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 1rem; }
-  .evidence-list { list-style: none; margin-top: 1rem; }
-  .evidence-list li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.65rem 0; border-bottom: 1px solid var(--border); font-size: 0.85rem; color: var(--muted); }
-  .evidence-list li:last-child { border-bottom: none; }
-  .evidence-list li::before { content: '→'; color: var(--electric); flex-shrink: 0; }
-
-  .backlog-visual { background: var(--navy); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-  .backlog-header { padding: 0.9rem 1.25rem; background: var(--navy-mid); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
-  .backlog-title { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--teal); }
-  .sprint-badge { padding: 0.2rem 0.65rem; background: rgba(74,127,255,0.12); border: 1px solid rgba(74,127,255,0.25); border-radius: 100px; font-size: 0.65rem; color: var(--electric); font-family: 'DM Mono', monospace; }
-  .backlog-items { padding: 0.75rem; }
-  .backlog-item { display: flex; align-items: center; gap: 0.85rem; padding: 0.65rem 0.5rem; border-radius: 6px; font-size: 0.8rem; color: var(--muted); transition: background 0.15s; }
-  .backlog-item:hover { background: rgba(255,255,255,0.03); }
-  .item-priority { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .p1 { background: #FF5B5B; } .p2 { background: var(--amber); } .p3 { background: var(--teal); }
-  .item-id { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: rgba(136,146,170,0.45); flex-shrink: 0; width: 56px; }
-  .item-story { flex: 1; color: var(--white); font-size: 0.78rem; }
-  .item-pts { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--electric); }
-  .item-status { padding: 0.12rem 0.45rem; border-radius: 4px; font-size: 0.6rem; font-family: 'DM Mono', monospace; flex-shrink: 0; }
-  .done { background: rgba(0,212,168,0.1); color: var(--teal); }
-  .wip { background: rgba(74,127,255,0.1); color: var(--electric); }
-  .todo { background: rgba(136,146,170,0.08); color: var(--muted); }
-
-  /* HERRAMIENTAS */
-  .tools-section { background: var(--navy-card); }
-  .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 3rem; }
-  .tool-group { border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem; }
-  .tool-group-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--teal); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
-  .tool-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.38rem 0; font-size: 0.83rem; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,0.04); }
-  .tool-item:last-child { border-bottom: none; }
-  .tool-item::before { content: '·'; color: var(--electric); }
-
-  /* CONTACTO */
-  .contact { text-align: center; padding: 6rem 2rem; background: linear-gradient(180deg, var(--navy) 0%, #050810 100%); }
-  .contact-card { max-width: 580px; margin: 3rem auto 0; background: var(--navy-card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
-  .contact-info { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; text-align: left; }
-  .contact-line { display: flex; align-items: center; gap: 1rem; font-size: 0.88rem; color: var(--muted); }
-  .contact-line span:first-child { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--electric); width: 80px; flex-shrink: 0; }
-  .availability { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.1rem; background: rgba(0,212,168,0.08); border: 1px solid rgba(0,212,168,0.2); border-radius: 100px; font-size: 0.78rem; color: var(--teal); margin-bottom: 2rem; }
-  .availability::before { content: ''; display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
-
-  footer { padding: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-  .footer-copy { font-size: 0.75rem; color: var(--muted); font-family: 'DM Mono', monospace; }
-  .footer-links { display: flex; gap: 1.5rem; }
-  .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--electric); }
+  footer{padding:1.8rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .fc{font-size:0.72rem;color:var(--muted);font-family:'DM Mono',monospace;}
+  .fl{display:flex;gap:1.4rem;}
+  .fl a{font-size:0.75rem;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+  .fl a:hover{color:var(--blue);}
 
   /* ANIMATIONS */
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fi{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .fi.vis{opacity:1;transform:translateY(0);}
 
   /* RESPONSIVE */
-  @media (max-width: 960px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .mvp-card { grid-template-columns: 1fr; }
-    .mvp-sidebar { border-right: none; border-bottom: 1px solid var(--border); }
-    .philosophy-grid { grid-template-columns: 1fr; }
-    .process-flow { grid-template-columns: 1fr 1fr; } .process-flow::before { display: none; }
-    .backlog-split { grid-template-columns: 1fr; }
-    .tools-grid { grid-template-columns: 1fr 1fr; }
+  @media(max-width:960px){
+    .hero-inner,.ebook-inner,.bl-split{grid-template-columns:1fr;}
+    .mvp{grid-template-columns:1fr;}
+    .mvp-side{border-right:none;border-bottom:1px solid var(--border);}
+    .phil-grid{grid-template-columns:1fr;}
+    .proc-flow{grid-template-columns:1fr 1fr;}.proc-flow::before{display:none;}
+    .tg-grid{grid-template-columns:1fr 1fr;}
   }
-  @media (max-width: 600px) {
-    .nav-links { display: none; }
-    .tools-grid { grid-template-columns: 1fr; }
-    .process-flow { grid-template-columns: 1fr; }
-    .hero-stats { grid-template-columns: 1fr 1fr; }
+  @media(max-width:600px){
+    .nav-links{display:none;}
+    .tg-grid{grid-template-columns:1fr;}
+    .proc-flow{grid-template-columns:1fr;}
+    .hero-stats{grid-template-columns:1fr 1fr;}
   }
-  @media (prefers-reduced-motion: reduce) { .fade-in { opacity: 1; transform: none; transition: none; } }
+  @media(prefers-reduced-motion:reduce){.fi{opacity:1;transform:none;transition:none;}}
+
+  /* ── I18N ── */
+  [data-es],[data-en]{transition:opacity 0.15s;}
+  html[data-lang="en"] [data-es]{display:none;}
+  html[data-lang="es"] [data-en]{display:none;}
 </style>
 </head>
 <body>
 
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" id="btn-es" onclick="setLang('es')">ES</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">claudio<span>.</span>segura</a>
   <ul class="nav-links">
-    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#filosofia"><span data-es>Filosofía</span><span data-en>Philosophy</span></a></li>
     <li><a href="#mvps">MVPs</a></li>
-    <li><a href="#proceso">Proceso</a></li>
-    <li><a href="#herramientas">Stack</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#ia"><span data-es>IA & Investigación</span><span data-en>AI & Research</span></a></li>
+    <li><a href="#proceso"><span data-es>Proceso</span><span data-en>Process</span></a></li>
+    <li><a href="#contacto"><span data-es>Contacto</span><span data-en>Contact</span></a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="grid-overlay"></div>
+  <div class="hero-bg"></div><div class="grid-bg"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">Product Owner · IT Manager · CDMX</div>
-      <h1>Entrego valor,<br>no <em>features.</em></h1>
-      <p class="hero-sub">20+ años en IT. 5 sistemas en producción o desarrollo activo para un grupo empresarial multi-filial. Trabajo donde el problema vive: con el equipo, en el proceso, frente al usuario real.</p>
+      <div class="eyebrow">Product Owner · IT Manager · CDMX</div>
+      <h1 data-es>Entrego valor,<br>no <em>features.</em></h1>
+      <h1 data-en>I deliver value,<br>not <em>features.</em></h1>
+      <p class="hero-sub" data-es>20+ años en IT. 5 sistemas en producción para un grupo empresarial multi-filial. Investigación aplicada sobre IA y mercado laboral. Trabajo donde el problema vive.</p>
+      <p class="hero-sub" data-en>20+ years in IT. 5 systems in production for a multi-subsidiary business group. Applied research on AI and the labor market. I work where the problem lives.</p>
       <div class="hero-ctas">
-        <a href="#mvps" class="btn-primary">Ver los 5 MVPs →</a>
-        <a href="#contacto" class="btn-ghost">Conectar</a>
+        <a href="#mvps" class="btn-p" data-es>Ver los 6 proyectos →</a>
+        <a href="#mvps" class="btn-p" data-en>See all 6 projects →</a>
+        <a href="#contacto" class="btn-g" data-es>Conectar</a>
+        <a href="#contacto" class="btn-g" data-en>Connect</a>
       </div>
     </div>
-    <div class="hero-stats fade-in">
-      <div class="stat-card wide">
-        <div class="stat-num">5</div>
-        <div class="stat-label">Sistemas entregados como PO</div>
-        <div class="stat-desc">Flotillas · Auditoría & Riesgos · RH · Gestor Documental · Evaluación por Competencias</div>
+    <div class="hero-stats fi">
+      <div class="sc wide">
+        <div class="sn">6</div>
+        <div class="sl" data-es>Proyectos como PO + investigación IA</div>
+        <div class="sl" data-en>Projects as PO + AI research</div>
+        <div class="sd" data-es>Flotillas · Auditoría · RH · Docs · Evaluación · Ebook IA</div>
+        <div class="sd" data-en>Fleet · Audit · HR · Docs · Evaluation · AI Ebook</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num teal">20<span style="font-size:1.5rem">+</span></div>
-        <div class="stat-label">Años en IT</div>
+      <div class="sc">
+        <div class="sn t">20<span style="font-size:1.4rem">+</span></div>
+        <div class="sl" data-es>Años en IT</div>
+        <div class="sl" data-en>Years in IT</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">3</div>
-        <div class="stat-label">En producción</div>
+      <div class="sc">
+        <div class="sn">4</div>
+        <div class="sl" data-es>En producción</div>
+        <div class="sl" data-en>In production</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num teal">Multi</div>
-        <div class="stat-label">Filiales impactadas</div>
+      <div class="sc">
+        <div class="sn t">MIT</div>
+        <div class="sl">Data Science</div>
       </div>
     </div>
   </div>
@@ -287,24 +280,32 @@
 <!-- FILOSOFÍA -->
 <section class="philosophy" id="filosofia">
   <div class="container">
-    <div class="section-eye">Filosofía PO</div>
-    <h2>El valor nace donde<br>ocurre el trabajo.</h2>
-    <p class="section-sub">Antes de escribir una historia de usuario, salgo de mi escritorio. El Gemba no es una práctica, es el punto de partida obligatorio.</p>
-    <div class="philosophy-grid fade-in">
-      <div class="pillar" data-num="01">
+    <div class="sec-eye" data-es>Filosofía PO</div>
+    <div class="sec-eye" data-en>PO Philosophy</div>
+    <h2 data-es>El valor nace donde<br>ocurre el trabajo.</h2>
+    <h2 data-en>Value is born where<br>work actually happens.</h2>
+    <p class="sec-sub" data-es>Antes de escribir una historia de usuario, salgo de mi escritorio. El Gemba no es una práctica, es el punto de partida obligatorio.</p>
+    <p class="sec-sub" data-en>Before writing a user story, I leave my desk. Gemba is not a practice — it's the mandatory starting point.</p>
+    <div class="phil-grid fi">
+      <div class="pillar" data-n="01">
         <span class="pillar-icon">🏭</span>
-        <h3>Gemba First</h3>
-        <p>Entiendo el problema donde ocurre. Entrevisto a las personas que operan el proceso hoy, antes de imaginar ninguna solución. El backlog es consecuencia del Gemba, no al revés.</p>
+        <h3 data-es>Gemba First</h3>
+        <h3 data-en>Gemba First</h3>
+        <p data-es>Entiendo el problema donde ocurre. Entrevisto a las personas que operan el proceso hoy, antes de imaginar ninguna solución. El backlog es consecuencia del Gemba, no al revés.</p>
+        <p data-en>I understand the problem where it happens. I interview the people who run the process today before imagining any solution. The backlog is a result of Gemba, not the other way around.</p>
       </div>
-      <div class="pillar" data-num="02">
+      <div class="pillar" data-n="02">
         <span class="pillar-icon">🎯</span>
         <h3>Outcome sobre Output</h3>
-        <p>Mi entregable no es software, es impacto medible. Cada sprint tiene una hipótesis de valor. Si no podemos medir el resultado, no lo priorizamos.</p>
+        <p data-es>Mi entregable no es software, es impacto medible. Cada sprint tiene una hipótesis de valor. Si no podemos medir el resultado, no lo priorizamos.</p>
+        <p data-en>My deliverable is not software — it's measurable impact. Every sprint has a value hypothesis. If we can't measure the outcome, we don't prioritize it.</p>
       </div>
-      <div class="pillar" data-num="03">
+      <div class="pillar" data-n="03">
         <span class="pillar-icon">🔁</span>
-        <h3>MVP con intención</h3>
-        <p>MVP no significa mínimo viable en funciones. Significa máximo aprendizaje con mínima inversión. Entrego, mido, pivoto o persisto. Sin ego en las hipótesis.</p>
+        <h3 data-es>MVP con intención</h3>
+        <h3 data-en>Intentional MVP</h3>
+        <p data-es>MVP no significa mínimo en funciones. Significa máximo aprendizaje con mínima inversión. Entrego, mido, pivoto o persisto. Sin ego en las hipótesis.</p>
+        <p data-en>MVP doesn't mean minimal in features. It means maximum learning with minimum investment. Deliver, measure, pivot or persist. No ego attached to hypotheses.</p>
       </div>
     </div>
   </div>
@@ -313,211 +314,304 @@
 <!-- MVPs -->
 <section id="mvps">
   <div class="container">
-    <div class="section-eye">Entregas de valor · Grupo KC</div>
-    <h2>5 sistemas. Un grupo.<br>Impacto real.</h2>
-    <p class="section-sub">Todos como Product Owner en Grupo KC Agente de Seguros, empresa multi-filial en CDMX. Del Gemba al backlog a producción.</p>
+    <div class="sec-eye">Grupo KC · <span data-es>Entregas de valor</span><span data-en>Value delivery</span></div>
+    <h2 data-es>5 sistemas. Un grupo.<br>Impacto real.</h2>
+    <h2 data-en>5 systems. One group.<br>Real impact.</h2>
+    <p class="sec-sub" data-es>Todos como Product Owner en Grupo KC Agente de Seguros, empresa multi-filial en CDMX. Del Gemba al backlog a producción.</p>
+    <p class="sec-sub" data-en>All as Product Owner at Grupo KC Insurance Agency, a multi-subsidiary company in Mexico City. From Gemba to backlog to production.</p>
 
-    <div class="mvp-grid fade-in">
+    <div class="mvp-grid fi">
 
-      <!-- 1. FLOTILLAS -->
-      <div class="mvp-card">
-        <div class="mvp-sidebar">
+      <!-- 01 FLOTILLAS -->
+      <div class="mvp">
+        <div class="mvp-side">
           <div class="mvp-num">MVP 01</div>
-          <div class="mvp-sector-badge badge-prod">✓ En producción</div>
-          <div class="mvp-sidebar-title">Sistema de Gestión de Flotillas</div>
+          <div class="badge b-prod">✓ <span data-es>En producción</span><span data-en>In production</span></div>
+          <div class="mvp-title" data-es>Sistema de Gestión de Flotillas</div>
+          <div class="mvp-title" data-en>Fleet Management System</div>
           <div class="mvp-meta">
-            <div class="mvp-meta-row">
-              <span class="mvp-meta-label">Cliente</span>
-              <span class="mvp-meta-val">Grupo KC · Multi-filial</span>
-            </div>
-            <div class="mvp-meta-row" style="margin-top:0.75rem">
-              <span class="mvp-meta-label">Rol</span>
-              <span class="mvp-meta-val">Product Owner</span>
-            </div>
+            <div class="meta-r"><span class="meta-l">Cliente</span><span class="meta-v">Grupo KC · Multi-filial</span></div>
+            <div class="meta-r"><span class="meta-l">Rol</span><span class="meta-v">Product Owner</span></div>
           </div>
         </div>
         <div class="mvp-body">
-          <div class="mvp-problem">
-            <div class="mvp-problem-label">El problema · Gemba</div>
-            <p>El control de la flotilla vehicular del grupo se llevaba en hojas de Excel sin trazabilidad ni ownership. Los mantenimientos preventivos se perdían, los correctivos llegaban sin historial, y la asignación de vehículos dependía de WhatsApp. Sin visibilidad, los costos de operación eran opacos para dirección.</p>
+          <div>
+            <div class="blk-label lbl-p" data-es>El problema · Gemba</div>
+            <div class="blk-label lbl-p" data-en>The problem · Gemba</div>
+            <p class="blk-text m" data-es>Control de flotilla en Excel sin trazabilidad. Mantenimientos preventivos perdidos, correctivos sin historial, asignación de vehículos por WhatsApp. Costos opacos para dirección.</p>
+            <p class="blk-text m" data-en>Fleet tracked in Excel with no traceability. Missed preventive maintenance, corrective work without history, vehicle assignment via WhatsApp. Costs invisible to leadership.</p>
           </div>
-          <div class="mvp-solution">
-            <div class="mvp-solution-label">La solución · MVP entregado</div>
-            <p>Sistema centralizado de gestión de flotilla con módulos de asignación de vehículos por usuario y fecha, agenda de mantenimiento preventivo con alertas automáticas, registro de mantenimientos correctivos con historial por unidad, y dashboard de estado de flota para dirección.</p>
+          <div>
+            <div class="blk-label lbl-s" data-es>La solución · MVP entregado</div>
+            <div class="blk-label lbl-s" data-en>The solution · MVP delivered</div>
+            <p class="blk-text w" data-es>Sistema centralizado con asignación de vehículos, agenda de mantenimiento preventivo con alertas automáticas, historial de correctivos por unidad y dashboard ejecutivo de estado de flota.</p>
+            <p class="blk-text w" data-en>Centralized system with vehicle assignment, preventive maintenance schedule with automatic alerts, corrective history per unit, and executive fleet status dashboard.</p>
           </div>
-          <div class="mvp-outcomes">
-            <span class="outcome-tag green">✓ Historial completo por unidad</span>
-            <span class="outcome-tag green">✓ Alertas de mantenimiento preventivo</span>
-            <span class="outcome-tag">Eliminó control por Excel</span>
-            <span class="outcome-tag">Visibilidad de costos operativos</span>
-            <span class="outcome-tag amber">⚡ En producción</span>
+          <div class="tags">
+            <span class="tag tag-g" data-es>✓ Historial completo por unidad</span>
+            <span class="tag tag-g" data-en>✓ Full history per unit</span>
+            <span class="tag tag-g" data-es>✓ Alertas preventivas</span>
+            <span class="tag tag-g" data-en>✓ Preventive alerts</span>
+            <span class="tag tag-b" data-es>Excel eliminado</span>
+            <span class="tag tag-b" data-en>Excel eliminated</span>
+            <span class="tag tag-a">⚡ <span data-es>En producción</span><span data-en>In production</span></span>
           </div>
-          <div class="mvp-footer-row">
-            <div class="mvp-tools"><span class="tool-chip">Scrum</span><span class="tool-chip">Jira</span><span class="tool-chip">Figma</span><span class="tool-chip">Notion</span></div>
-            <span class="mvp-year">2024</span>
+          <div class="mvp-footer">
+            <div class="chips"><span class="chip">Scrum</span><span class="chip">Jira</span><span class="chip">Figma</span><span class="chip">Notion</span></div>
+            <span class="yr">2024</span>
           </div>
         </div>
       </div>
 
-      <!-- 2. AUDITORÍA Y RIESGOS -->
-      <div class="mvp-card">
-        <div class="mvp-sidebar">
+      <!-- 02 AUDITORÍA -->
+      <div class="mvp">
+        <div class="mvp-side">
           <div class="mvp-num">MVP 02</div>
-          <div class="mvp-sector-badge badge-prod">✓ En producción</div>
-          <div class="mvp-sidebar-title">Sistema de Auditoría y Gestión de Riesgos</div>
+          <div class="badge b-prod">✓ <span data-es>En producción</span><span data-en>In production</span></div>
+          <div class="mvp-title" data-es>Sistema de Auditoría y Gestión de Riesgos</div>
+          <div class="mvp-title" data-en>Audit & Risk Management System</div>
           <div class="mvp-meta">
-            <div class="mvp-meta-row">
-              <span class="mvp-meta-label">Cliente</span>
-              <span class="mvp-meta-val">Grupo KC · Dirección de Auditoría</span>
-            </div>
-            <div class="mvp-meta-row" style="margin-top:0.75rem">
-              <span class="mvp-meta-label">Stakeholders</span>
-              <span class="mvp-meta-val">Javier, Rosario, Andrea</span>
-            </div>
+            <div class="meta-r"><span class="meta-l">Cliente</span><span class="meta-v">Grupo KC · Dirección Auditoría</span></div>
+            <div class="meta-r"><span class="meta-l">Stakeholders</span><span class="meta-v">Javier · Rosario · Andrea</span></div>
           </div>
         </div>
         <div class="mvp-body">
-          <div class="mvp-problem">
-            <div class="mvp-problem-label">El problema · Gemba</div>
-            <p>El equipo de auditoría registraba hallazgos y riesgos en Excel compartidos. Sin trazabilidad, sin ownership por riesgo, sin visibilidad ejecutiva. La matriz de riesgos se actualizaba manualmente y llegaba desactualizada a dirección. La fórmula de riesgo residual (ERM) se aplicaba de forma inconsistente entre auditores.</p>
+          <div>
+            <div class="blk-label lbl-p" data-es>El problema · Gemba</div>
+            <div class="blk-label lbl-p" data-en>The problem · Gemba</div>
+            <p class="blk-text m" data-es>Hallazgos y riesgos en Excel compartidos. Sin trazabilidad, sin ownership, sin visibilidad ejecutiva. Fórmula ERM aplicada inconsistentemente entre auditores.</p>
+            <p class="blk-text m" data-en>Findings and risks tracked in shared Excel files. No traceability, no ownership, no executive visibility. ERM residual risk formula applied inconsistently across auditors.</p>
           </div>
-          <div class="mvp-solution">
-            <div class="mvp-solution-label">La solución · MVP entregado</div>
-            <p>Portal web de gestión de riesgos con registro estructurado de hallazgos, asignación de owner por riesgo, cálculo automático de riesgo residual con fórmula ERM, sección de identificación de controles, y exportación a Excel alineada al layout original del cliente. Dashboard ejecutivo en tiempo real. Desplegado en atlas.grupokc.com.mx/riesgos/registro.</p>
+          <div>
+            <div class="blk-label lbl-s" data-es>La solución · MVP entregado</div>
+            <div class="blk-label lbl-s" data-en>The solution · MVP delivered</div>
+            <p class="blk-text w" data-es>Portal de riesgos con registro estructurado, cálculo automático de riesgo residual ERM, sección de controles, exportación a Excel alineada al layout original y dashboard ejecutivo en tiempo real. Desplegado en atlas.grupokc.com.mx/riesgos/registro.</p>
+            <p class="blk-text w" data-en>Risk portal with structured registration, automated ERM residual risk calculation, controls section, Excel export aligned to the original layout, and real-time executive dashboard. Live at atlas.grupokc.com.mx/riesgos/registro.</p>
           </div>
-          <div class="mvp-outcomes">
-            <span class="outcome-tag green">✓ Riesgo residual automatizado (ERM)</span>
-            <span class="outcome-tag green">✓ Trazabilidad completa por hallazgo</span>
-            <span class="outcome-tag">Dashboard ejecutivo en tiempo real</span>
-            <span class="outcome-tag">3 hojas de cálculo eliminadas</span>
-            <span class="outcome-tag amber">⚡ En producción</span>
+          <div class="tags">
+            <span class="tag tag-g" data-es>✓ Riesgo residual ERM automatizado</span>
+            <span class="tag tag-g" data-en>✓ Automated ERM residual risk</span>
+            <span class="tag tag-g" data-es>✓ Trazabilidad completa</span>
+            <span class="tag tag-g" data-en>✓ Full traceability</span>
+            <span class="tag tag-b" data-es>3 hojas Excel eliminadas</span>
+            <span class="tag tag-b" data-en>3 Excel sheets eliminated</span>
           </div>
-          <div class="mvp-footer-row">
-            <div class="mvp-tools"><span class="tool-chip">Scrum</span><span class="tool-chip">Jira</span><span class="tool-chip">Figma</span><span class="tool-chip">ERM</span><span class="tool-chip">Excel export</span></div>
-            <span class="mvp-year">2024 – 2025</span>
+          <div class="mvp-footer">
+            <div class="chips"><span class="chip">Scrum</span><span class="chip">Jira</span><span class="chip">ERM</span><span class="chip">Figma</span></div>
+            <span class="yr">2024 – 2025</span>
           </div>
         </div>
       </div>
 
-      <!-- 3. RECURSOS HUMANOS -->
-      <div class="mvp-card">
-        <div class="mvp-sidebar">
+      <!-- 03 RH -->
+      <div class="mvp">
+        <div class="mvp-side">
           <div class="mvp-num">MVP 03</div>
-          <div class="mvp-sector-badge badge-prod">✓ En producción</div>
-          <div class="mvp-sidebar-title">Sistema de Recursos Humanos</div>
+          <div class="badge b-prod">✓ <span data-es>En producción</span><span data-en>In production</span></div>
+          <div class="mvp-title" data-es>Sistema de Recursos Humanos</div>
+          <div class="mvp-title" data-en>Human Resources System</div>
           <div class="mvp-meta">
-            <div class="mvp-meta-row">
-              <span class="mvp-meta-label">Cliente</span>
-              <span class="mvp-meta-val">Grupo KC · Dirección RH</span>
-            </div>
-            <div class="mvp-meta-row" style="margin-top:0.75rem">
-              <span class="mvp-meta-label">Rol</span>
-              <span class="mvp-meta-val">Product Owner</span>
-            </div>
+            <div class="meta-r"><span class="meta-l">Cliente</span><span class="meta-v">Grupo KC · Dirección RH</span></div>
+            <div class="meta-r"><span class="meta-l">Rol</span><span class="meta-v">Product Owner</span></div>
           </div>
         </div>
         <div class="mvp-body">
-          <div class="mvp-problem">
-            <div class="mvp-problem-label">El problema · Gemba</div>
-            <p>La gestión de personal en un grupo multi-filial requería consolidar información de colaboradores dispersa en múltiples fuentes. Altas, bajas, vacaciones, contratos y expedientes vivían en carpetas físicas y hojas de cálculo sin versión única de la verdad. Dirección no tenía visibilidad del headcount real en tiempo real.</p>
+          <div>
+            <div class="blk-label lbl-p" data-es>El problema · Gemba</div>
+            <div class="blk-label lbl-p" data-en>The problem · Gemba</div>
+            <p class="blk-text m" data-es>Gestión de personal dispersa en múltiples fuentes. Expedientes en carpetas físicas, sin versión única de la verdad. Dirección sin visibilidad del headcount real en tiempo real.</p>
+            <p class="blk-text m" data-en>Personnel data scattered across multiple sources. Records in physical folders, no single source of truth. Leadership had no real-time headcount visibility.</p>
           </div>
-          <div class="mvp-solution">
-            <div class="mvp-solution-label">La solución · MVP entregado</div>
-            <p>Sistema centralizado de gestión de personal con expediente digital por colaborador, módulo de altas y bajas con flujo de aprobación, control de vacaciones y ausencias, gestión de contratos por filial, y reportes de headcount consolidados para dirección. Fuente única de verdad para todo el grupo.</p>
+          <div>
+            <div class="blk-label lbl-s" data-es>La solución · MVP entregado</div>
+            <div class="blk-label lbl-s" data-en>The solution · MVP delivered</div>
+            <p class="blk-text w" data-es>Expediente digital por colaborador, flujo de aprobación de altas y bajas, control de vacaciones, gestión de contratos por filial y reportes de headcount consolidados para dirección.</p>
+            <p class="blk-text w" data-en>Digital employee file, onboarding/offboarding approval workflow, vacation tracking, contract management by subsidiary, and consolidated headcount reports for leadership.</p>
           </div>
-          <div class="mvp-outcomes">
-            <span class="outcome-tag green">✓ Expediente digital centralizado</span>
-            <span class="outcome-tag green">✓ Visibilidad multi-filial en tiempo real</span>
-            <span class="outcome-tag">Flujo de aprobación de altas/bajas</span>
-            <span class="outcome-tag">Control de vacaciones integrado</span>
-            <span class="outcome-tag amber">⚡ En producción</span>
+          <div class="tags">
+            <span class="tag tag-g" data-es>✓ Expediente digital centralizado</span>
+            <span class="tag tag-g" data-en>✓ Centralized digital file</span>
+            <span class="tag tag-g" data-es>✓ Visibilidad multi-filial</span>
+            <span class="tag tag-g" data-en>✓ Multi-subsidiary visibility</span>
+            <span class="tag tag-a">⚡ <span data-es>En producción</span><span data-en>In production</span></span>
           </div>
-          <div class="mvp-footer-row">
-            <div class="mvp-tools"><span class="tool-chip">Scrum</span><span class="tool-chip">Jira</span><span class="tool-chip">Figma</span><span class="tool-chip">Notion</span></div>
-            <span class="mvp-year">2024</span>
+          <div class="mvp-footer">
+            <div class="chips"><span class="chip">Scrum</span><span class="chip">Jira</span><span class="chip">Figma</span><span class="chip">Notion</span></div>
+            <span class="yr">2024</span>
           </div>
         </div>
       </div>
 
-      <!-- 4. GESTOR DOCUMENTAL -->
-      <div class="mvp-card">
-        <div class="mvp-sidebar">
+      <!-- 04 GESTOR DOCUMENTAL -->
+      <div class="mvp">
+        <div class="mvp-side">
           <div class="mvp-num">MVP 04</div>
-          <div class="mvp-sector-badge badge-prod">✓ En producción</div>
-          <div class="mvp-sidebar-title">Sistema Gestor Documental</div>
+          <div class="badge b-prod">✓ <span data-es>En producción</span><span data-en>In production</span></div>
+          <div class="mvp-title" data-es>Sistema Gestor Documental</div>
+          <div class="mvp-title" data-en>Document Management System</div>
           <div class="mvp-meta">
-            <div class="mvp-meta-row">
-              <span class="mvp-meta-label">Cliente</span>
-              <span class="mvp-meta-val">Grupo KC · Multi-filial</span>
-            </div>
-            <div class="mvp-meta-row" style="margin-top:0.75rem">
-              <span class="mvp-meta-label">Rol</span>
-              <span class="mvp-meta-val">Product Owner</span>
-            </div>
+            <div class="meta-r"><span class="meta-l">Cliente</span><span class="meta-v">Grupo KC · Multi-filial</span></div>
+            <div class="meta-r"><span class="meta-l">Rol</span><span class="meta-v">Product Owner</span></div>
           </div>
         </div>
         <div class="mvp-body">
-          <div class="mvp-problem">
-            <div class="mvp-problem-label">El problema · Gemba</div>
-            <p>Los documentos críticos del grupo (pólizas, contratos, actas, procedimientos) estaban dispersos en carpetas de red sin naming convention, versiones duplicadas y sin control de acceso por rol. Encontrar un documento específico tomaba minutos u horas. La auditoría externa identificó riesgo en la gestión documental.</p>
+          <div>
+            <div class="blk-label lbl-p" data-es>El problema · Gemba</div>
+            <div class="blk-label lbl-p" data-en>The problem · Gemba</div>
+            <p class="blk-text m" data-es>Documentos críticos dispersos en carpetas de red sin versiones ni control de acceso. Encontrar un documento tomaba minutos u horas. Riesgo identificado por auditoría externa.</p>
+            <p class="blk-text m" data-en>Critical documents scattered across network folders with no version control or access management. Finding a document took minutes or hours. Risk flagged by external audit.</p>
           </div>
-          <div class="mvp-solution">
-            <div class="mvp-solution-label">La solución · MVP entregado</div>
-            <p>Repositorio documental centralizado con categorización por tipo, área y filial, control de versiones, búsqueda full-text, permisos de acceso por rol, y flujo de aprobación para documentos controlados. Trazabilidad de quién accede, modifica o aprueba cada documento. Alineado a requerimientos de auditoría interna.</p>
+          <div>
+            <div class="blk-label lbl-s" data-es>La solución · MVP entregado</div>
+            <div class="blk-label lbl-s" data-en>The solution · MVP delivered</div>
+            <p class="blk-text w" data-es>Repositorio centralizado con categorización, control de versiones, búsqueda full-text, permisos por rol y flujo de aprobación para documentos controlados. Trazabilidad completa alineada a auditoría.</p>
+            <p class="blk-text w" data-en>Centralized repository with categorization, version control, full-text search, role-based permissions, and approval workflow for controlled documents. Full audit traceability.</p>
           </div>
-          <div class="mvp-outcomes">
-            <span class="outcome-tag green">✓ Versión única por documento</span>
-            <span class="outcome-tag green">✓ Control de acceso por rol</span>
-            <span class="outcome-tag">Búsqueda full-text</span>
-            <span class="outcome-tag">Trazabilidad de auditoría</span>
-            <span class="outcome-tag amber">⚡ En producción</span>
+          <div class="tags">
+            <span class="tag tag-g" data-es>✓ Versión única por documento</span>
+            <span class="tag tag-g" data-en>✓ Single version per document</span>
+            <span class="tag tag-g" data-es>✓ Control de acceso por rol</span>
+            <span class="tag tag-g" data-en>✓ Role-based access control</span>
+            <span class="tag tag-b">ISO 27001</span>
           </div>
-          <div class="mvp-footer-row">
-            <div class="mvp-tools"><span class="tool-chip">Scrum</span><span class="tool-chip">Jira</span><span class="tool-chip">Figma</span><span class="tool-chip">ISO 27001</span></div>
-            <span class="mvp-year">2024 – 2025</span>
+          <div class="mvp-footer">
+            <div class="chips"><span class="chip">Scrum</span><span class="chip">Jira</span><span class="chip">Figma</span><span class="chip">ISO 27001</span></div>
+            <span class="yr">2024 – 2025</span>
           </div>
         </div>
       </div>
 
-      <!-- 5. EVALUACIÓN POR COMPETENCIAS -->
-      <div class="mvp-card">
-        <div class="mvp-sidebar">
+      <!-- 05 EVALUACIÓN -->
+      <div class="mvp">
+        <div class="mvp-side">
           <div class="mvp-num">MVP 05</div>
-          <div class="mvp-sector-badge badge-dev">⚙ En desarrollo</div>
-          <div class="mvp-sidebar-title">Sistema de Evaluación por Competencias</div>
+          <div class="badge b-dev">⚙ <span data-es>En desarrollo</span><span data-en>In development</span></div>
+          <div class="mvp-title" data-es>Sistema de Evaluación por Competencias</div>
+          <div class="mvp-title" data-en>Competency Evaluation System</div>
           <div class="mvp-meta">
-            <div class="mvp-meta-row">
-              <span class="mvp-meta-label">Cliente</span>
-              <span class="mvp-meta-val">Grupo KC · Dirección RH</span>
-            </div>
-            <div class="mvp-meta-row" style="margin-top:0.75rem">
-              <span class="mvp-meta-label">Etapa</span>
-              <span class="mvp-meta-val">Discovery → Backlog activo</span>
-            </div>
+            <div class="meta-r"><span class="meta-l">Cliente</span><span class="meta-v">Grupo KC · Dirección RH</span></div>
+            <div class="meta-r"><span class="meta-l" data-es>Etapa</span><span class="meta-l" data-en>Stage</span><span class="meta-v" data-es>Discovery → Backlog activo</span><span class="meta-v" data-en>Discovery → Active backlog</span></div>
           </div>
         </div>
         <div class="mvp-body">
-          <div class="mvp-problem">
-            <div class="mvp-problem-label">El problema · Gemba</div>
-            <p>Las evaluaciones de desempeño del grupo se realizaban con formatos en Word o PDF, sin estandarización de competencias por rol ni comparabilidad entre filiales. Los resultados no se acumulaban históricamente, imposibilitando identificar brechas de talento o tomar decisiones de desarrollo basadas en datos.</p>
+          <div>
+            <div class="blk-label lbl-p" data-es>El problema · Gemba</div>
+            <div class="blk-label lbl-p" data-en>The problem · Gemba</div>
+            <p class="blk-text m" data-es>Evaluaciones en Word/PDF sin estandarización por rol ni comparabilidad entre filiales. Sin historial acumulado. Imposible identificar brechas de talento con datos.</p>
+            <p class="blk-text m" data-en>Evaluations in Word/PDF with no role standardization or cross-subsidiary comparability. No accumulated history. Talent gaps impossible to identify from data.</p>
           </div>
-          <div class="mvp-solution">
-            <div class="mvp-solution-label">La solución · En construcción</div>
-            <p>Plataforma de evaluación 360° por competencias, configurables por rol y filial. El MVP incluye definición del catálogo de competencias por área, ciclos de evaluación con autoevaluación y evaluación del líder, resultados históricos por colaborador, y heat map de brechas de talento por área para toma de decisiones de L&D.</p>
+          <div>
+            <div class="blk-label lbl-s" data-es>La solución · En construcción</div>
+            <div class="blk-label lbl-s" data-en>The solution · In progress</div>
+            <p class="blk-text w" data-es>Plataforma 360° con catálogo de competencias por rol y filial, ciclos de evaluación con autoevaluación y evaluación del líder, historial por colaborador y heat map de brechas para L&D.</p>
+            <p class="blk-text w" data-en>360° platform with competency catalog by role and subsidiary, evaluation cycles with self-assessment and manager review, employee history, and talent gap heat map for L&D decisions.</p>
           </div>
-          <div class="mvp-outcomes">
-            <span class="outcome-tag">Evaluación 360° estandarizada</span>
-            <span class="outcome-tag">Catálogo de competencias por rol</span>
-            <span class="outcome-tag">Heat map de brechas de talento</span>
-            <span class="outcome-tag amber">⚙ Backlog activo · Sprint 2</span>
+          <div class="tags">
+            <span class="tag tag-b" data-es>Evaluación 360° estandarizada</span>
+            <span class="tag tag-b" data-en>Standardized 360° evaluation</span>
+            <span class="tag tag-b" data-es>Heat map de talento</span>
+            <span class="tag tag-b" data-en>Talent heat map</span>
+            <span class="tag tag-a">⚙ Sprint 2</span>
           </div>
-          <div class="mvp-footer-row">
-            <div class="mvp-tools"><span class="tool-chip">Scrum</span><span class="tool-chip">Jira</span><span class="tool-chip">Figma</span><span class="tool-chip">360° eval</span></div>
-            <span class="mvp-year">2025 →</span>
+          <div class="mvp-footer">
+            <div class="chips"><span class="chip">Scrum</span><span class="chip">Jira</span><span class="chip">Figma</span><span class="chip">360° eval</span></div>
+            <span class="yr">2025 →</span>
           </div>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- EBOOK / IA RESEARCH -->
+<section class="ebook-section" id="ia">
+  <div class="container">
+    <div class="sec-eye" data-es>Investigación aplicada · IA & Mercado</div>
+    <div class="sec-eye" data-en>Applied research · AI & Labor market</div>
+    <h2 data-es>Cuando la IA cambia<br>el mercado, lo documento.</h2>
+    <h2 data-en>When AI reshapes<br>the market, I document it.</h2>
+    <p class="sec-sub" data-es>No solo uso IA en mis proyectos. Investigué su impacto real en los profesionales independientes y lo publiqué como aporte al mercado.</p>
+    <p class="sec-sub" data-en>I don't just use AI in my projects. I researched its real impact on independent professionals and published it as a contribution to the market.</p>
+
+    <div class="ebook-inner fi">
+      <div class="ebook-card">
+        <div class="ebook-header">
+          <div class="ebook-cat" data-es>📘 Proyecto personal · Publicación 2026</div>
+          <div class="ebook-cat" data-en>📘 Personal project · Published 2026</div>
+          <div class="ebook-title" data-es>El Freelancer Irremplazable</div>
+          <div class="ebook-title" data-en>The Irreplaceable Freelancer</div>
+          <div class="ebook-sub" data-es>Cómo usar IA para triplicar productividad, cobrar más y dejar de competir contra herramientas que nunca se cansan.</div>
+          <div class="ebook-sub" data-en>How to use AI to triple productivity, charge more, and stop competing against tools that never get tired.</div>
+        </div>
+        <div class="ebook-body">
+          <div class="ebook-insight">
+            <div class="ins-icon">🔍</div>
+            <div>
+              <div class="ins-title" data-es>Hipótesis investigada</div>
+              <div class="ins-title" data-en>Research hypothesis</div>
+              <div class="ins-desc" data-es>¿El AI reemplaza freelancers o reemplaza a los que no lo adoptan? La respuesta cambia todo el modelo de valor del profesional independiente.</div>
+              <div class="ins-desc" data-en>Does AI replace freelancers, or does it replace those who don't adopt it? The answer reshapes the entire value model of independent professionals.</div>
+            </div>
+          </div>
+          <div class="ebook-insight">
+            <div class="ins-icon">🧪</div>
+            <div>
+              <div class="ins-title" data-es>Metodología aplicada</div>
+              <div class="ins-title" data-en>Applied methodology</div>
+              <div class="ins-desc" data-es>Framework CTORE para prompts profesionales. Flujo de trabajo de 4 fases. Plan de acción de 30 días con métricas por semana. 30+ prompts validados por profesión.</div>
+              <div class="ins-desc" data-en>CTORE framework for professional prompts. 4-phase workflow. 30-day action plan with weekly metrics. 30+ validated prompts organized by profession.</div>
+            </div>
+          </div>
+          <div class="ebook-insight">
+            <div class="ins-icon">📊</div>
+            <div>
+              <div class="ins-title" data-es>Hallazgo principal</div>
+              <div class="ins-title" data-en>Main finding</div>
+              <div class="ins-desc" data-es>Un profesional con AI bien integrada puede producir en 90 minutos lo que antes tomaba 4 horas — sin bajar precios. El tiempo ganado es ganancia de negocio, no descuento al cliente.</div>
+              <div class="ins-desc" data-en>A professional with well-integrated AI can produce in 90 minutes what previously took 4 hours — without lowering rates. Time saved is business gain, not a client discount.</div>
+            </div>
+          </div>
+          <div class="ebook-insight">
+            <div class="ins-icon">💡</div>
+            <div>
+              <div class="ins-title" data-es>Aporte al mercado</div>
+              <div class="ins-title" data-en>Market contribution</div>
+              <div class="ins-desc" data-es>El cliente paga por resultado, no por proceso. Este cambio de marco — de cobrar por hora a cobrar por valor entregado — es la diferencia entre crecer o quedar obsoleto.</div>
+              <div class="ins-desc" data-en>Clients pay for outcomes, not process. This reframe — from billing by hour to billing by value delivered — is the difference between growing and becoming obsolete.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ebook-right">
+        <h3 data-es>Por qué lo investigué como PO</h3>
+        <h3 data-en>Why I researched this as a PO</h3>
+        <p data-es>Durante el trabajo en Grupo KC observé que los equipos adoptan IA por presión externa, no por entendimiento. El resultado: herramientas costosas con impacto mínimo. Decidí investigar qué hace diferente a quienes sí la usan bien.</p>
+        <p data-en>While working at Grupo KC I observed that teams adopt AI under external pressure, not understanding. The result: expensive tools with minimal impact. I decided to investigate what distinguishes those who actually use it effectively.</p>
+        <p data-es>El ebook no es un manual de herramientas. Es un framework replicable basado en el mismo principio que aplico en producto: entender el problema real antes de proponer cualquier solución.</p>
+        <p data-en>The ebook is not a tools manual. It's a replicable framework based on the same principle I apply in product: understand the real problem before proposing any solution.</p>
+        <div class="quote-block">
+          <p data-es>"El AI no es tu competencia. Es la razón por la que podés cobrar el doble desde mañana, si sabés cómo usarlo."</p>
+          <p data-en>"AI is not your competition. It's the reason you can charge twice as much starting tomorrow — if you know how to use it."</p>
+          <div class="quote-src" data-es>— El Freelancer Irremplazable, Introducción</div>
+          <div class="quote-src" data-en>— The Irreplaceable Freelancer, Introduction</div>
+        </div>
+        <div class="pill-row">
+          <span class="pill" data-es>Framework CTORE</span>
+          <span class="pill" data-en>CTORE Framework</span>
+          <span class="pill" data-es>Flujo 4 fases</span>
+          <span class="pill" data-en>4-phase workflow</span>
+          <span class="pill" data-es>Pricing por valor</span>
+          <span class="pill" data-en>Value-based pricing</span>
+          <span class="pill" data-es>Plan 30 días</span>
+          <span class="pill" data-en>30-day plan</span>
+          <span class="pill" data-es>30+ prompts validados</span>
+          <span class="pill" data-en>30+ validated prompts</span>
+          <span class="pill" data-es>Investigación 2026</span>
+          <span class="pill" data-en>2026 research</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -525,197 +619,198 @@
 <!-- PROCESO -->
 <section class="process" id="proceso">
   <div class="container">
-    <div class="section-eye">Mi proceso</div>
-    <h2>De Gemba a entrega.</h2>
-    <p class="section-sub">No es metodología, es un hábito. Lo aplico en cada proyecto independientemente del framework o el cliente.</p>
-    <div class="process-flow fade-in">
+    <div class="sec-eye" data-es>Mi proceso</div>
+    <div class="sec-eye" data-en>My process</div>
+    <h2 data-es>De Gemba a entrega.</h2>
+    <h2 data-en>From Gemba to delivery.</h2>
+    <p class="sec-sub" data-es>No es metodología, es un hábito. Lo aplico en cada proyecto independientemente del framework o el cliente.</p>
+    <p class="sec-sub" data-en>Not a methodology — a habit. I apply it on every project regardless of framework or client.</p>
+    <div class="proc-flow fi">
       <div class="step">
-        <div class="step-dot">🚶</div>
+        <div class="dot">🚶</div>
         <h4>Gemba</h4>
-        <p>Voy donde ocurre el trabajo. Observo, escucho, documento el dolor real con los operadores.</p>
+        <p data-es>Voy donde ocurre el trabajo. Observo, escucho, documento el dolor real con los operadores.</p>
+        <p data-en>I go where work happens. Observe, listen, document real pain with operators.</p>
       </div>
       <div class="step">
-        <div class="step-dot">🗺</div>
+        <div class="dot">🗺</div>
         <h4>Discovery</h4>
-        <p>Entrevistas con SMEs. Job-to-be-done. Flujo AS-IS documentado antes de imaginar soluciones.</p>
+        <p data-es>Entrevistas con SMEs. Job-to-be-done. Flujo AS-IS antes de imaginar soluciones.</p>
+        <p data-en>SME interviews. Jobs-to-be-done. AS-IS flow before imagining solutions.</p>
       </div>
       <div class="step">
-        <div class="step-dot">📋</div>
+        <div class="dot">📋</div>
         <h4>Backlog</h4>
-        <p>Historias con criterios de aceptación medibles. Priorización por valor de negocio vs esfuerzo.</p>
+        <p data-es>Historias con criterios medibles. Priorización por valor de negocio vs esfuerzo.</p>
+        <p data-en>Stories with measurable criteria. Prioritized by business value vs effort.</p>
       </div>
       <div class="step">
-        <div class="step-dot">🚀</div>
-        <h4>Entrega</h4>
-        <p>Sprints de 2 semanas. Demo con stakeholders reales. Sin sorpresas en la revisión.</p>
+        <div class="dot">🚀</div>
+        <h4 data-es>Entrega</h4>
+        <h4 data-en>Delivery</h4>
+        <p data-es>Sprints de 2 semanas. Demo con stakeholders reales. Sin sorpresas.</p>
+        <p data-en>2-week sprints. Demo with real stakeholders. No surprises.</p>
       </div>
       <div class="step">
-        <div class="step-dot">📊</div>
-        <h4>Métrica</h4>
-        <p>Mido el outcome prometido en el sprint goal. Si no mueve la aguja, aprendemos y ajustamos.</p>
+        <div class="dot">📊</div>
+        <h4 data-es>Métrica</h4>
+        <h4 data-en>Metrics</h4>
+        <p data-es>Mido el outcome del sprint goal. Si no mueve la aguja, aprendo y ajusto.</p>
+        <p data-en>I measure the sprint goal outcome. If it doesn't move the needle, I learn and adjust.</p>
       </div>
     </div>
 
-    <!-- BACKLOG VISUAL -->
-    <div class="backlog-split fade-in" style="margin-top:4rem">
-      <div class="backlog-left">
-        <h3>El backlog como artefacto de entendimiento</h3>
-        <p>Un backlog bien escrito es evidencia de haber entendido el problema. Cada historia representa una conversación real con un usuario real del sistema.</p>
-        <p>Mi proceso de discovery incluye entrevistas estructuradas con los SMEs de cada área, observación directa del flujo, y documentación del estado AS-IS antes de proponer ninguna solución técnica.</p>
-        <ul class="evidence-list">
-          <li>Entrevistas con 2-3 SMEs por módulo antes de la primera historia</li>
-          <li>Flujo AS-IS documentado → pain points → hipótesis de valor</li>
-          <li>Criterios de aceptación vinculados a resultados de negocio</li>
-          <li>Retrospectivas documentadas para aprendizaje acumulado entre sprints</li>
-          <li>Demos con stakeholders al cierre de cada sprint</li>
+    <div class="bl-split fi">
+      <div class="bl-left">
+        <h3 data-es>El backlog como artefacto de entendimiento</h3>
+        <h3 data-en>Backlog as an understanding artifact</h3>
+        <p data-es>Un backlog bien escrito es evidencia de haber entendido el problema. Cada historia representa una conversación real con un usuario real del sistema.</p>
+        <p data-en>A well-written backlog is evidence of having understood the problem. Each story represents a real conversation with a real system user.</p>
+        <p data-es>Mi proceso incluye entrevistas con los SMEs de cada área, observación directa del flujo AS-IS y documentación antes de proponer ninguna solución técnica.</p>
+        <p data-en>My process includes interviews with each area's SMEs, direct AS-IS flow observation, and documentation before proposing any technical solution.</p>
+        <ul class="ev-list">
+          <li data-es>2-3 entrevistas con SMEs por módulo antes de la primera historia</li>
+          <li data-en>2-3 SME interviews per module before the first story</li>
+          <li data-es>Flujo AS-IS → pain points → hipótesis de valor</li>
+          <li data-en>AS-IS flow → pain points → value hypothesis</li>
+          <li data-es>Criterios de aceptación vinculados a resultados de negocio</li>
+          <li data-en>Acceptance criteria tied to business outcomes</li>
+          <li data-es>Retrospectivas documentadas entre sprints</li>
+          <li data-en>Documented retrospectives between sprints</li>
+          <li data-es>Demo con stakeholders al cierre de cada sprint</li>
+          <li data-en>Demo with stakeholders at each sprint close</li>
         </ul>
       </div>
-      <div class="backlog-visual">
-        <div class="backlog-header">
-          <span class="backlog-title">▶ backlog · auditoria-riesgos · sprint-4</span>
-          <span class="sprint-badge">Sprint 4 · 2025</span>
+      <div class="bl-viz">
+        <div class="bl-hd">
+          <span class="bl-t">▶ backlog · auditoria-riesgos · sprint-4</span>
+          <span class="sp-badge">Sprint 4 · 2025</span>
         </div>
-        <div class="backlog-items">
-          <div class="backlog-item">
-            <div class="item-priority p1"></div>
-            <div class="item-id">ARK-041</div>
-            <div class="item-story">Como auditor, registrar hallazgo con owner y fecha límite</div>
-            <div class="item-pts">8</div>
-            <div class="item-status done">done</div>
-          </div>
-          <div class="backlog-item">
-            <div class="item-priority p1"></div>
-            <div class="item-id">ARK-042</div>
-            <div class="item-story">Como director, ver dashboard de riesgos en tiempo real</div>
-            <div class="item-pts">13</div>
-            <div class="item-status done">done</div>
-          </div>
-          <div class="backlog-item">
-            <div class="item-priority p1"></div>
-            <div class="item-id">ARK-043</div>
-            <div class="item-story">Como auditor, calcular riesgo residual con fórmula ERM</div>
-            <div class="item-pts">8</div>
-            <div class="item-status done">done</div>
-          </div>
-          <div class="backlog-item">
-            <div class="item-priority p2"></div>
-            <div class="item-id">ARK-044</div>
-            <div class="item-story">Como owner, recibir notificación antes del vencimiento</div>
-            <div class="item-pts">5</div>
-            <div class="item-status wip">in progress</div>
-          </div>
-          <div class="backlog-item">
-            <div class="item-priority p2"></div>
-            <div class="item-id">ARK-045</div>
-            <div class="item-story">Como auditor, exportar matriz de riesgos a Excel</div>
-            <div class="item-pts">5</div>
-            <div class="item-status done">done</div>
-          </div>
-          <div class="backlog-item">
-            <div class="item-priority p3"></div>
-            <div class="item-id">ARK-046</div>
-            <div class="item-story">Como director, comparar evolución de riesgos mes a mes</div>
-            <div class="item-pts">13</div>
-            <div class="item-status todo">todo</div>
-          </div>
+        <div class="bl-items">
+          <div class="bi"><div class="pr p1"></div><div class="bid">ARK-041</div><div class="bs" data-es>Como auditor, registrar hallazgo con owner y fecha límite</div><div class="bs" data-en>As auditor, register finding with owner and deadline</div><div class="bpt">8</div><div class="bst done">done</div></div>
+          <div class="bi"><div class="pr p1"></div><div class="bid">ARK-042</div><div class="bs" data-es>Como director, ver dashboard de riesgos en tiempo real</div><div class="bs" data-en>As director, view real-time risk dashboard</div><div class="bpt">13</div><div class="bst done">done</div></div>
+          <div class="bi"><div class="pr p1"></div><div class="bid">ARK-043</div><div class="bs" data-es>Como auditor, calcular riesgo residual con fórmula ERM</div><div class="bs" data-en>As auditor, calculate residual risk with ERM formula</div><div class="bpt">8</div><div class="bst done">done</div></div>
+          <div class="bi"><div class="pr p2"></div><div class="bid">ARK-044</div><div class="bs" data-es>Como owner, recibir notificación antes del vencimiento</div><div class="bs" data-en>As owner, receive alert before due date</div><div class="bpt">5</div><div class="bst wip">in progress</div></div>
+          <div class="bi"><div class="pr p2"></div><div class="bid">ARK-045</div><div class="bs" data-es>Como auditor, exportar matriz de riesgos a Excel</div><div class="bs" data-en>As auditor, export risk matrix to Excel</div><div class="bpt">5</div><div class="bst done">done</div></div>
+          <div class="bi"><div class="pr p3"></div><div class="bid">ARK-046</div><div class="bs" data-es>Como director, comparar evolución de riesgos mes a mes</div><div class="bs" data-en>As director, compare risk evolution month over month</div><div class="bpt">13</div><div class="bst todo">todo</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HERRAMIENTAS -->
-<section class="tools-section" id="herramientas">
+<!-- TOOLS -->
+<section class="tools" id="herramientas">
   <div class="container">
-    <div class="section-eye">Stack de trabajo</div>
-    <h2>Las herramientas del oficio.</h2>
-    <p class="section-sub">Uso lo que sirve al proyecto. Sin dogmatismo de framework ni herramienta.</p>
-    <div class="tools-grid fade-in">
-      <div class="tool-group">
-        <div class="tool-group-label">Discovery</div>
-        <div class="tool-item">Entrevistas Gemba</div>
-        <div class="tool-item">Jobs-to-be-done</div>
-        <div class="tool-item">Mapeo de procesos</div>
-        <div class="tool-item">5 Whys</div>
-        <div class="tool-item">Customer journey</div>
+    <div class="sec-eye" data-es>Stack de trabajo</div>
+    <div class="sec-eye" data-en>Work stack</div>
+    <h2 data-es>Las herramientas del oficio.</h2>
+    <h2 data-en>Tools of the trade.</h2>
+    <p class="sec-sub" data-es>Uso lo que sirve al proyecto. Sin dogmatismo de framework ni herramienta.</p>
+    <p class="sec-sub" data-en>I use what serves the project. No framework or tool dogmatism.</p>
+    <div class="tg-grid fi">
+      <div class="tg">
+        <div class="tg-lbl">Discovery</div>
+        <div class="ti" data-es>Entrevistas Gemba</div><div class="ti" data-en>Gemba interviews</div>
+        <div class="ti">Jobs-to-be-done</div>
+        <div class="ti" data-es>Mapeo de procesos</div><div class="ti" data-en>Process mapping</div>
+        <div class="ti">5 Whys</div>
+        <div class="ti">Customer journey</div>
       </div>
-      <div class="tool-group">
-        <div class="tool-group-label">Gestión & Backlog</div>
-        <div class="tool-item">Jira</div>
-        <div class="tool-item">Notion</div>
-        <div class="tool-item">Azure DevOps</div>
-        <div class="tool-item">Story mapping</div>
-        <div class="tool-item">OKRs</div>
+      <div class="tg">
+        <div class="tg-lbl" data-es>Gestión & Backlog</div>
+        <div class="tg-lbl" data-en>Management & Backlog</div>
+        <div class="ti">Jira</div>
+        <div class="ti">Notion</div>
+        <div class="ti">Azure DevOps</div>
+        <div class="ti" data-es>Story mapping</div><div class="ti" data-en>Story mapping</div>
+        <div class="ti">OKRs</div>
       </div>
-      <div class="tool-group">
-        <div class="tool-group-label">Diseño & Proto</div>
-        <div class="tool-item">Figma</div>
-        <div class="tool-item">Miro</div>
-        <div class="tool-item">Wireframing</div>
-        <div class="tool-item">User flow</div>
-        <div class="tool-item">Lean UX</div>
+      <div class="tg">
+        <div class="tg-lbl" data-es>Diseño & Proto</div>
+        <div class="tg-lbl" data-en>Design & Prototyping</div>
+        <div class="ti">Figma</div>
+        <div class="ti">Miro</div>
+        <div class="ti" data-es>Wireframing</div><div class="ti" data-en>Wireframing</div>
+        <div class="ti">User flow</div>
+        <div class="ti">Lean UX</div>
       </div>
-      <div class="tool-group">
-        <div class="tool-group-label">Frameworks & Certs</div>
-        <div class="tool-item">Scrum</div>
-        <div class="tool-item">Kanban</div>
-        <div class="tool-item">ITIL 4</div>
-        <div class="tool-item">ISO/IEC 27001</div>
-        <div class="tool-item">Data Science (MIT)</div>
+      <div class="tg">
+        <div class="tg-lbl">Frameworks</div>
+        <div class="ti">Scrum · Kanban</div>
+        <div class="ti">ITIL 4</div>
+        <div class="ti">ISO/IEC 27001</div>
+        <div class="ti">MIT Data Science</div>
+        <div class="ti">AI · Claude · GPT</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACTO -->
+<!-- CONTACT -->
 <section class="contact" id="contacto">
   <div class="container">
-    <div class="section-eye" style="justify-content:center">Hablemos</div>
-    <h2>Disponible para el<br>reto correcto.</h2>
-    <p class="section-sub" style="margin: 1rem auto; text-align:center">No busco un trabajo. Busco un problema que valga la pena resolver con un equipo que quiera hacerlo bien.</p>
-    <div class="contact-card fade-in">
-      <div class="availability">Disponible para nuevas oportunidades</div>
-      <div class="contact-info">
-        <div class="contact-line"><span>ubicación</span><span>Ciudad de México, México</span></div>
-        <div class="contact-line"><span>linkedin</span><span>www.linkedin.com/in/claudio-segura-ti</span></div>
-        <div class="contact-line"><span>github</span><span>github.com/cseguraplus</span></div>
-        <div class="contact-line"><span>sectores</span><span>Seguros · Banca · Logística · IT</span></div>
+    <div class="sec-eye" style="justify-content:center" data-es>Hablemos</div>
+    <div class="sec-eye" style="justify-content:center" data-en>Let's talk</div>
+    <h2 data-es>Disponible para el<br>reto correcto.</h2>
+    <h2 data-en>Available for the<br>right challenge.</h2>
+    <p class="sec-sub" style="margin:1rem auto;text-align:center" data-es>No busco un trabajo. Busco un problema que valga la pena resolver con un equipo que quiera hacerlo bien.</p>
+    <p class="sec-sub" style="margin:1rem auto;text-align:center" data-en>I'm not looking for a job. I'm looking for a problem worth solving with a team that wants to do it right.</p>
+    <div class="ct-card fi">
+      <div class="avail" data-es>Disponible para nuevas oportunidades</div>
+      <div class="avail" data-en>Available for new opportunities</div>
+      <div class="ct-info">
+        <div class="ct-line"><span data-es>ubicación</span><span data-en>location</span><span>Ciudad de México, México</span></div>
+        <div class="ct-line"><span>linkedin</span><span>linkedin.com/in/cseguraplus</span></div>
+        <div class="ct-line"><span>github</span><span>github.com/cseguraplus</span></div>
+        <div class="ct-line"><span data-es>sectores</span><span data-en>sectors</span><span data-es>Seguros · Banca · Logística · IT</span><span data-en>Insurance · Banking · Logistics · IT</span></div>
       </div>
-      <a href="mailto:jclaudio.segura.f@gmail.com" class="btn-primary" style="width:100%; text-align:center; display:block">Iniciar conversación →</a>
+      <a href="mailto:claudio@grupokc.com" class="btn-p" style="width:100%;text-align:center;display:block" data-es>Iniciar conversación →</a>
+      <a href="mailto:claudio@grupokc.com" class="btn-p" style="width:100%;text-align:center;display:block" data-en>Start a conversation →</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-copy">© 2025 Jorge Claudio Segura Fajardo · CDMX</div>
-  <div class="footer-links">
+  <div class="fc">© 2026 Jorge Claudio Segura Fajardo · CDMX</div>
+  <div class="fl">
     <a href="#mvps">MVPs</a>
-    <a href="#filosofia">Filosofía</a>
-    <a href="#proceso">Proceso</a>
-    <a href="#contacto">Contacto</a>
+    <a href="#ia" data-es>IA & Research</a>
+    <a href="#ia" data-en>AI & Research</a>
+    <a href="#contacto" data-es>Contacto</a>
+    <a href="#contacto" data-en>Contact</a>
   </div>
 </footer>
 
 <script>
+  // Language switcher
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    localStorage.setItem('lang', lang);
+  }
+
+  // Restore saved lang
+  const saved = localStorage.getItem('lang');
+  if (saved) setLang(saved);
+
+  // Scroll animations
   const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
 
   // Stagger cards
-  document.querySelectorAll('.mvp-grid, .philosophy-grid, .tools-grid, .hero-stats').forEach(grid => {
-    const cards = grid.children;
+  document.querySelectorAll('.mvp-grid,.phil-grid,.tg-grid,.hero-stats').forEach(grid => {
+    const cards = Array.from(grid.children);
     const go = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          Array.from(cards).forEach((c, i) => {
-            setTimeout(() => { c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, i * 100);
-          });
-          go.disconnect();
-        }
-      });
-    }, { threshold: 0.08 });
-    Array.from(cards).forEach(c => { c.style.opacity = '0'; c.style.transform = 'translateY(18px)'; c.style.transition = 'opacity 0.5s ease, transform 0.5s ease'; });
+      if (entries[0].isIntersecting) {
+        cards.forEach((c, i) => setTimeout(() => { c.style.opacity='1'; c.style.transform='translateY(0)'; }, i * 90));
+        go.disconnect();
+      }
+    }, { threshold: 0.06 });
+    cards.forEach(c => { c.style.opacity='0'; c.style.transform='translateY(16px)'; c.style.transition='opacity 0.5s ease,transform 0.5s ease'; });
     go.observe(grid);
   });
 </script>
