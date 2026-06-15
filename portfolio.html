@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claudio Segura · Product Owner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A0F1E;
+    --navy-card: #111827;
+    --navy-mid: #1A2240;
+    --electric: #4A7FFF;
+    --teal: #00D4A8;
+    --white: #F0F4FF;
+    --muted: #8892AA;
+    --border: rgba(74,127,255,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 2rem;
+    background: rgba(10,15,30,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--teal); }
+
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--electric); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(74,127,255,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(0,212,168,0.06) 0%, transparent 60%);
+  }
+
+  .grid-overlay {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(74,127,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,127,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 24px; height: 1px; background: var(--teal);
+  }
+
+  h1 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, var(--electric), var(--teal));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    color: var(--muted); font-size: 1.1rem; font-weight: 300;
+    line-height: 1.7; margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 0.85rem 2rem;
+    background: var(--electric);
+    color: white; font-weight: 600; font-size: 0.9rem;
+    border: none; border-radius: 6px; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s; letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { background: #3a6fe8; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(74,127,255,0.3); }
+
+  .btn-ghost {
+    padding: 0.85rem 2rem;
+    background: transparent; color: var(--white);
+    font-weight: 500; font-size: 0.9rem;
+    border: 1px solid var(--border); border-radius: 6px; cursor: pointer;
+    text-decoration: none; display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--electric); color: var(--electric); }
+
+  /* ─── STATS CARD (hero right) ─── */
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+
+  .stat-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .stat-card:hover { border-color: var(--electric); transform: translateY(-2px); }
+  .stat-card:first-child { grid-column: 1 / -1; background: linear-gradient(135deg, #0F1A35, #111827); }
+
+  .stat-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 2.8rem; font-weight: 900;
+    line-height: 1; letter-spacing: -0.03em;
+    color: var(--electric);
+    margin-bottom: 0.4rem;
+  }
+  .stat-num.teal { color: var(--teal); }
+
+  .stat-label {
+    font-size: 0.8rem; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500;
+  }
+
+  .stat-desc {
+    font-size: 0.85rem; color: var(--white); margin-top: 0.5rem;
+    font-weight: 300;
+  }
+
+  /* ─── SECTIONS COMUNES ─── */
+  section { padding: 6rem 2rem; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-eye {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: var(--teal); letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-eye::before {
+    content: ''; display: block;
+    width: 32px; height: 1px; background: var(--teal);
+  }
+
+  h2 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900; letter-spacing: -0.025em;
+    line-height: 1.1; margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    color: var(--muted); font-size: 1.05rem;
+    font-weight: 300; max-width: 560px; line-height: 1.7;
+  }
+
+  /* ─── FILOSOFÍA / GEMBA ─── */
+  .philosophy { background: var(--navy-card); }
+
+  .philosophy-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pillar {
+    border: 1px solid var(--border); border-radius: 12px; padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .pillar:hover { border-color: var(--electric); transform: translateY(-3px); }
+
+  .pillar::before {
+    content: attr(data-num);
+    position: absolute; top: -0.5rem; right: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 5rem; font-weight: 900;
+    color: rgba(74,127,255,0.06); line-height: 1;
+    pointer-events: none;
+  }
+
+  .pillar-icon {
+    font-size: 1.8rem; margin-bottom: 1rem; display: block;
+  }
+
+  .pillar h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    margin-bottom: 0.75rem; color: var(--white);
+  }
+
+  .pillar p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+  /* ─── MVPS / DELIVERY TIMELINE ─── */
+  .mvps-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+  }
+
+  .mvp-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+  }
+
+  .mvp-card {
+    background: var(--navy-card);
+    border: 1px solid var(--border); border-radius: 16px;
+    padding: 2rem; position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+  .mvp-card:hover {
+    border-color: var(--electric);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(10,15,30,0.6);
+  }
+
+  .mvp-card.featured {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #0D1830, #0A1428);
+    border-color: rgba(74,127,255,0.25);
+  }
+
+  .mvp-sector {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+  .mvp-sector.ins { color: #FFB347; }
+  .mvp-sector.bank { color: var(--teal); }
+  .mvp-sector.log { color: var(--electric); }
+  .mvp-sector.tech { color: #E879F9; }
+
+  .mvp-card h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.25rem; font-weight: 700;
+    letter-spacing: -0.015em; margin-bottom: 0.75rem;
+  }
+
+  .mvp-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+
+  .mvp-outcomes {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem;
+  }
+
+  .outcome-tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.35rem 0.8rem;
+    background: rgba(74,127,255,0.1);
+    border: 1px solid rgba(74,127,255,0.2);
+    border-radius: 100px; font-size: 0.75rem;
+    color: var(--electric); font-weight: 500;
+  }
+  .outcome-tag.green {
+    background: rgba(0,212,168,0.08);
+    border-color: rgba(0,212,168,0.2);
+    color: var(--teal);
+  }
+
+  .mvp-footer {
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .mvp-tools {
+    display: flex; gap: 0.4rem; flex-wrap: wrap;
+  }
+
+  .tool-chip {
+    padding: 0.2rem 0.6rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 4px; font-size: 0.7rem;
+    color: var(--muted); font-family: 'DM Mono', monospace;
+  }
+
+  .mvp-year {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  /* ─── BACKLOG / PROCESO ─── */
+  .process { background: var(--navy-card); }
+
+  .process-flow {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+    margin-top: 3rem; position: relative;
+  }
+
+  .process-flow::before {
+    content: '';
+    position: absolute; top: 2.8rem; left: 10%; right: 10%;
+    height: 1px; background: linear-gradient(90deg, transparent, var(--electric), var(--teal), var(--electric), transparent);
+    opacity: 0.3;
+  }
+
+  .step {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 0 0.5rem;
+    position: relative; z-index: 1;
+  }
+
+  .step-dot {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; margin-bottom: 1rem;
+    border: 2px solid var(--border);
+    background: var(--navy);
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .step:hover .step-dot {
+    border-color: var(--electric);
+    transform: scale(1.1);
+  }
+
+  .step h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    margin-bottom: 0.5rem; color: var(--white);
+  }
+
+  .step p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+  /* ─── ENTENDIMIENTO / DISCOVERY ─── */
+  .discovery-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    align-items: start; margin-top: 3rem;
+  }
+
+  .discovery-left h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.5rem; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 1rem;
+  }
+
+  .discovery-left p {
+    color: var(--muted); font-size: 0.95rem; line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .quote-block {
+    border-left: 3px solid var(--teal);
+    padding: 1rem 1.5rem;
+    background: rgba(0,212,168,0.05);
+    border-radius: 0 8px 8px 0;
+    margin: 1.5rem 0;
+  }
+
+  .quote-block p {
+    font-style: italic; color: var(--white);
+    font-size: 1rem; margin-bottom: 0.5rem;
+  }
+
+  .quote-source { font-size: 0.75rem; color: var(--teal); font-family: 'DM Mono', monospace; }
+
+  .evidence-list { list-style: none; margin-top: 1.5rem; }
+  .evidence-list li {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.88rem; color: var(--muted);
+  }
+  .evidence-list li:last-child { border-bottom: none; }
+  .evidence-list li::before { content: '→'; color: var(--electric); flex-shrink: 0; }
+
+  /* ─── BACKLOG ARTEFACT ─── */
+  .backlog-visual {
+    background: var(--navy);
+    border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .backlog-header {
+    padding: 1rem 1.5rem;
+    background: var(--navy-mid);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .backlog-title {
+    font-family: 'DM Mono', monospace; font-size: 0.75rem;
+    color: var(--teal);
+  }
+
+  .sprint-badge {
+    padding: 0.25rem 0.75rem;
+    background: rgba(74,127,255,0.15);
+    border: 1px solid rgba(74,127,255,0.3);
+    border-radius: 100px; font-size: 0.7rem;
+    color: var(--electric); font-family: 'DM Mono', monospace;
+  }
+
+  .backlog-items { padding: 1rem; }
+
+  .backlog-item {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.75rem 0.5rem; border-radius: 6px;
+    font-size: 0.82rem; color: var(--muted);
+    transition: background 0.15s;
+  }
+  .backlog-item:hover { background: rgba(255,255,255,0.03); }
+
+  .item-priority {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+  }
+  .p1 { background: #FF5B5B; }
+  .p2 { background: #FFB347; }
+  .p3 { background: var(--teal); }
+
+  .item-id {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    color: rgba(136,146,170,0.5); flex-shrink: 0; width: 60px;
+  }
+
+  .item-story { flex: 1; color: var(--white); }
+
+  .item-pts {
+    font-family: 'DM Mono', monospace; font-size: 0.7rem;
+    color: var(--electric);
+  }
+
+  .item-status {
+    padding: 0.15rem 0.5rem; border-radius: 4px;
+    font-size: 0.65rem; font-family: 'DM Mono', monospace;
+  }
+  .done { background: rgba(0,212,168,0.1); color: var(--teal); }
+  .wip { background: rgba(74,127,255,0.1); color: var(--electric); }
+  .todo { background: rgba(136,146,170,0.1); color: var(--muted); }
+
+  /* ─── HERRAMIENTAS ─── */
+  .tools-section { background: var(--navy-card); }
+
+  .tools-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .tool-group {
+    border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem;
+  }
+
+  .tool-group-label {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem;
+    color: var(--teal); text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+
+  .tool-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.4rem 0; font-size: 0.85rem; color: var(--muted);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .tool-item:last-child { border-bottom: none; }
+  .tool-item::before { content: '·'; color: var(--electric); }
+
+  /* ─── CONTACTO ─── */
+  .contact {
+    text-align: center; padding: 6rem 2rem;
+    background: linear-gradient(180deg, var(--navy) 0%, #050810 100%);
+  }
+
+  .contact-card {
+    max-width: 600px; margin: 3rem auto 0;
+    background: var(--navy-card);
+    border: 1px solid var(--border); border-radius: 20px;
+    padding: 3rem;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+
+  .contact-line {
+    display: flex; align-items: center; gap: 1rem;
+    font-size: 0.9rem; color: var(--muted);
+  }
+  .contact-line span:first-child {
+    font-family: 'DM Mono', monospace; font-size: 0.72rem;
+    color: var(--electric); width: 80px; flex-shrink: 0;
+  }
+
+  .availability {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: rgba(0,212,168,0.08);
+    border: 1px solid rgba(0,212,168,0.2);
+    border-radius: 100px; font-size: 0.8rem; color: var(--teal);
+    margin-bottom: 2rem;
+  }
+
+  .availability::before {
+    content: ''; display: block;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-copy {
+    font-size: 0.8rem; color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a {
+    font-size: 0.8rem; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--electric); }
+
+  /* ─── SCROLL ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .philosophy-grid { grid-template-columns: 1fr; }
+    .mvp-grid { grid-template-columns: 1fr; }
+    .mvp-card.featured { grid-column: auto; }
+    .process-flow { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .process-flow::before { display: none; }
+    .discovery-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .process-flow { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-in { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">claudio<span>.</span>segura</div>
+  <ul class="nav-links">
+    <li><a href="#filosofia">Filosofía</a></li>
+    <li><a href="#mvps">MVPs</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#herramientas">Stack</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Product Owner · Senior PM</div>
+      <h1>Entrego valor,<br>no <em>features.</em></h1>
+      <p class="hero-sub">
+        20+ años en IT. Trabajo donde el problema vive: con el equipo, en el proceso, frente al cliente real. Construyo MVPs que mueven métricas, no slides.
+      </p>
+      <div class="hero-ctas">
+        <a href="#mvps" class="btn-primary">Ver entregas de valor →</a>
+        <a href="#contacto" class="btn-ghost">Conectar</a>
+      </div>
+    </div>
+
+    <div class="hero-stats fade-in">
+      <div class="stat-card">
+        <div class="stat-num">20<span style="font-size:1.8rem">+</span></div>
+        <div class="stat-label">Años en IT</div>
+        <div class="stat-desc">Banca · Seguros · Logística · Fintech</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num teal">12</div>
+        <div class="stat-label">MVPs entregados</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Sectores</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num teal">∞</div>
+        <div class="stat-label">Gemba walks</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILOSOFÍA / GEMBA -->
+<section class="philosophy" id="filosofia">
+  <div class="container">
+    <div class="section-eye">Filosofía PO</div>
+    <h2>El valor nace donde<br>ocurre el trabajo.</h2>
+    <p class="section-sub">Antes de escribir una historia de usuario, salgo de mi escritorio. El Gemba no es una visita, es el punto de partida.</p>
+
+    <div class="philosophy-grid fade-in">
+      <div class="pillar" data-num="01">
+        <span class="pillar-icon">🏭</span>
+        <h3>Gemba First</h3>
+        <p>Entiendo el problema donde ocurre. Entrevisto operadores, observo flujos, mapeo el dolor real antes de abrir Jira. El backlog es consecuencia del Gemba, no al revés.</p>
+      </div>
+      <div class="pillar" data-num="02">
+        <span class="pillar-icon">🎯</span>
+        <h3>Outcome sobre Output</h3>
+        <p>Mi entregable no es software, es impacto medible. Cada sprint tiene una hipótesis: si construimos X, el usuario logra Y. Si no podemos medirlo, no lo priorizamos.</p>
+      </div>
+      <div class="pillar" data-num="03">
+        <span class="pillar-icon">🔁</span>
+        <h3>Ciclos cortos, aprendizaje rápido</h3>
+        <p>MVP no significa mínimo viable en funciones; significa máximo aprendizaje con mínima inversión. Entrego, mido, pivoto o persisto. Sin ego en las hipótesis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MVPs / ENTREGAS DE VALOR -->
+<section id="mvps">
+  <div class="container">
+    <div class="mvps-header">
+      <div>
+        <div class="section-eye">Entregas de valor</div>
+        <h2>MVPs con clientes reales.</h2>
+        <p class="section-sub">Proyectos donde fui Product Owner, con contexto, decisiones tomadas y resultados medidos.</p>
+      </div>
+    </div>
+
+    <div class="mvp-grid fade-in">
+
+      <!-- FEATURED -->
+      <div class="mvp-card featured">
+        <div class="mvp-sector ins">🏥 Seguros · Grupo KC</div>
+        <h3>Portal de Gestión de Riesgos — MVP de Auditoría Interna</h3>
+        <p>El equipo de auditoría trazaba riesgos en Excel compartidos. Sin trazabilidad, sin ownership, sin visibilidad para dirección. Realicé entrevistas Gemba con Andrea, Rosario y Javier, mapeé el flujo de auditoría y diseñé el backlog desde el pain, no desde la tecnología. El MVP automatizó el registro de hallazgos con flujo de validación y dashboard ejecutivo.</p>
+        <div class="mvp-outcomes">
+          <span class="outcome-tag green">✓ Tiempo de reporte –60%</span>
+          <span class="outcome-tag green">✓ Trazabilidad completa por riesgo</span>
+          <span class="outcome-tag">Visibilidad ejecutiva en tiempo real</span>
+          <span class="outcome-tag">Eliminó 3 hojas de cálculo manuales</span>
+        </div>
+        <div class="mvp-footer">
+          <div class="mvp-tools">
+            <span class="tool-chip">Scrum</span>
+            <span class="tool-chip">Jira</span>
+            <span class="tool-chip">Figma</span>
+            <span class="tool-chip">Notion</span>
+          </div>
+          <span class="mvp-year">2024 – 2025</span>
+        </div>
+      </div>
+
+      <div class="mvp-card">
+        <div class="mvp-sector log">📦 Logística · NETCS</div>
+        <h3>Plataforma de Automatización de Procesos Operativos</h3>
+        <p>Discovery de 8 semanas con SMEs de operaciones para mapear flujos candidatos a automatización. Prioricé backlog por ROI/esfuerzo. Reduje 40% el tiempo de gestión de emisiones mensuales.</p>
+        <div class="mvp-outcomes">
+          <span class="outcome-tag green">✓ ROI positivo sprint 3</span>
+          <span class="outcome-tag">5 procesos automatizados</span>
+        </div>
+        <div class="mvp-footer">
+          <div class="mvp-tools"><span class="tool-chip">BPMN</span><span class="tool-chip">RPA</span></div>
+          <span class="mvp-year">2023</span>
+        </div>
+      </div>
+
+      <div class="mvp-card">
+        <div class="mvp-sector ins">🔄 Seguros · MetLife</div>
+        <h3>Rehabilitación de Pólizas — Flujo Digital</h3>
+        <p>Proceso manual con tiempos de resolución de 5+ días. Tras discovery con José Ángel y Beatriz, rediseñé el flujo con criterios de aceptación medibles. MVP redujo tiempo a 48h.</p>
+        <div class="mvp-outcomes">
+          <span class="outcome-tag green">✓ Tiempo –58% (5d → 2d)</span>
+          <span class="outcome-tag">NPS operativo +22pts</span>
+        </div>
+        <div class="mvp-footer">
+          <div class="mvp-tools"><span class="tool-chip">User stories</span><span class="tool-chip">Journey map</span></div>
+          <span class="mvp-year">2023</span>
+        </div>
+      </div>
+
+      <div class="mvp-card">
+        <div class="mvp-sector bank">🏦 Banca · Citi Banamex</div>
+        <h3>Gestión de Infraestructura IT — Modelo de Servicio</h3>
+        <p>7+ años como IT Manager construyendo procesos ITIL. Implementé modelo de soporte N1/N2 con KPIs de resolución, reduciendo tickets escalados 35% en 6 meses.</p>
+        <div class="mvp-outcomes">
+          <span class="outcome-tag green">✓ SLA >95% sostenido</span>
+          <span class="outcome-tag">Escalaciones –35%</span>
+        </div>
+        <div class="mvp-footer">
+          <div class="mvp-tools"><span class="tool-chip">ITIL</span><span class="tool-chip">ISO 27001</span></div>
+          <span class="mvp-year">2009 – 2016</span>
+        </div>
+      </div>
+
+      <div class="mvp-card">
+        <div class="mvp-sector ins">⚡ Seguros · AXA / SURA</div>
+        <h3>Consultoría IT Independiente — Transformación Digital</h3>
+        <p>5 años como consultor independiente para AXA, SAT, Qualitas, SURA. Lideré iniciativas de transformación digital con foco en procesos de suscripción y gestión de siniestros.</p>
+        <div class="mvp-outcomes">
+          <span class="outcome-tag">5 clientes enterprise</span>
+          <span class="outcome-tag">Sector seguros + gobierno</span>
+        </div>
+        <div class="mvp-footer">
+          <div class="mvp-tools"><span class="tool-chip">PMO</span><span class="tool-chip">Scrum</span></div>
+          <span class="mvp-year">2016 – 2021</span>
+        </div>
+      </div>
+
+      <div class="mvp-card">
+        <div class="mvp-sector tech">🏃 Tech · Side project</div>
+        <h3>App Coach Triatlón — IA para planes de entrenamiento</h3>
+        <p>Reemplacé el caos de WhatsApp para compartir planes con atletas por una plataforma web con planes generados por IA. Soy PO y usuario #1. Validé hipótesis con 4 atletas en 2 sprints.</p>
+        <div class="mvp-outcomes">
+          <span class="outcome-tag green">✓ MVP en producción</span>
+          <span class="outcome-tag">IA-generated training plans</span>
+        </div>
+        <div class="mvp-footer">
+          <div class="mvp-tools"><span class="tool-chip">React</span><span class="tool-chip">AI API</span><span class="tool-chip">GitHub</span></div>
+          <span class="mvp-year">2025</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO / BACKLOG -->
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="section-eye">Seguimiento de entendimiento</div>
+    <h2>De Gemba a entrega.</h2>
+    <p class="section-sub">Mi proceso no es una metodología, es un hábito. Lo aplico en cada proyecto independientemente del framework.</p>
+
+    <div class="process-flow fade-in">
+      <div class="step">
+        <div class="step-dot">🚶</div>
+        <h4>Gemba</h4>
+        <p>Voy donde ocurre el trabajo. Observo, escucho, documento el dolor real.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">🗺</div>
+        <h4>Discovery</h4>
+        <p>Entrevistas con SMEs. Job-to-be-done. Mapa de procesos as-is.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">📋</div>
+        <h4>Backlog</h4>
+        <p>Historias con criterios medibles. Priorización por valor/esfuerzo.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">🚀</div>
+        <h4>Entrega</h4>
+        <p>Sprints de 2 semanas. Demo con stakeholders reales. Sin sorpresas.</p>
+      </div>
+      <div class="step">
+        <div class="step-dot">📊</div>
+        <h4>Métrica</h4>
+        <p>Mido el outcome prometido. Si no mueve la aguja, aprendemos y pivotamos.</p>
+      </div>
+    </div>
+
+    <!-- BACKLOG VISUAL -->
+    <div class="discovery-grid fade-in" style="margin-top:4rem">
+      <div class="discovery-left">
+        <h3>El backlog como artefacto de entendimiento</h3>
+        <p>Un backlog bien escrito es el resultado de haber entendido el problema. Cada historia de usuario representa una conversación real con un usuario real.</p>
+
+        <div class="quote-block">
+          <p>"El mejor producto que puedes hacer es el que resuelve el problema real que nadie había articulado todavía."</p>
+          <div class="quote-source">— Claudio Segura, tras la demo del sprint 3 en Grupo KC</div>
+        </div>
+
+        <p>Mi proceso de discovery incluye entrevistas estructuradas con subject matter experts, observación directa (Gemba), y documentación del flujo AS-IS antes de imaginar cualquier solución.</p>
+
+        <ul class="evidence-list">
+          <li>Entrevistas con 3+ SMEs por proceso antes de escribir la primera historia</li>
+          <li>Mapeo de flujo AS-IS → identificación de pain points → hipótesis de valor</li>
+          <li>Criterios de aceptación vinculados a métricas de negocio, no a funcionalidad</li>
+          <li>Retrospectivas documentadas para aprendizaje acumulado</li>
+        </ul>
+      </div>
+
+      <div class="backlog-visual">
+        <div class="backlog-header">
+          <span class="backlog-title">▶ backlog · riesgos-kc · sprint-4</span>
+          <span class="sprint-badge">Sprint 4 / 2025</span>
+        </div>
+        <div class="backlog-items">
+          <div class="backlog-item">
+            <div class="item-priority p1"></div>
+            <div class="item-id">RKC-041</div>
+            <div class="item-story">Como auditor, quiero registrar hallazgo con owner asignado</div>
+            <div class="item-pts">8</div>
+            <div class="item-status done">done</div>
+          </div>
+          <div class="backlog-item">
+            <div class="item-priority p1"></div>
+            <div class="item-id">RKC-042</div>
+            <div class="item-story">Como director, quiero ver dashboard de riesgos en tiempo real</div>
+            <div class="item-pts">13</div>
+            <div class="item-status done">done</div>
+          </div>
+          <div class="backlog-item">
+            <div class="item-priority p2"></div>
+            <div class="item-id">RKC-043</div>
+            <div class="item-story">Como auditor, quiero filtrar hallazgos por área y estatus</div>
+            <div class="item-pts">5</div>
+            <div class="item-status done">done</div>
+          </div>
+          <div class="backlog-item">
+            <div class="item-priority p2"></div>
+            <div class="item-id">RKC-044</div>
+            <div class="item-story">Como owner de riesgo, quiero recibir notificación de vencimiento</div>
+            <div class="item-pts">8</div>
+            <div class="item-status wip">in progress</div>
+          </div>
+          <div class="backlog-item">
+            <div class="item-priority p3"></div>
+            <div class="item-id">RKC-045</div>
+            <div class="item-story">Como auditor, quiero exportar reporte mensual a PDF</div>
+            <div class="item-pts">5</div>
+            <div class="item-status todo">todo</div>
+          </div>
+          <div class="backlog-item">
+            <div class="item-priority p3"></div>
+            <div class="item-id">RKC-046</div>
+            <div class="item-story">Como director, quiero comparar riesgos mes a mes</div>
+            <div class="item-pts">13</div>
+            <div class="item-status todo">todo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERRAMIENTAS -->
+<section class="tools-section" id="herramientas">
+  <div class="container">
+    <div class="section-eye">Stack de trabajo</div>
+    <h2>Las herramientas del oficio.</h2>
+    <p class="section-sub">Uso lo que sirve. Sin dogmatismo de framework.</p>
+
+    <div class="tools-grid fade-in">
+      <div class="tool-group">
+        <div class="tool-group-label">Discovery</div>
+        <div class="tool-item">Entrevistas Gemba</div>
+        <div class="tool-item">Jobs-to-be-done</div>
+        <div class="tool-item">Process mapping</div>
+        <div class="tool-item">5 Whys</div>
+        <div class="tool-item">Customer journey</div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Gestión & Backlog</div>
+        <div class="tool-item">Jira</div>
+        <div class="tool-item">Notion</div>
+        <div class="tool-item">Trello</div>
+        <div class="tool-item">Azure DevOps</div>
+        <div class="tool-item">Story mapping</div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Diseño & Proto</div>
+        <div class="tool-item">Figma</div>
+        <div class="tool-item">Miro</div>
+        <div class="tool-item">Wireframing</div>
+        <div class="tool-item">User flow</div>
+        <div class="tool-item">Lean UX</div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Frameworks</div>
+        <div class="tool-item">Scrum</div>
+        <div class="tool-item">Kanban</div>
+        <div class="tool-item">ITIL 4</div>
+        <div class="tool-item">ISO/IEC 27001</div>
+        <div class="tool-item">OKRs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="container">
+    <div class="section-eye" style="justify-content:center">Hablemos</div>
+    <h2>Disponible para el<br>reto correcto.</h2>
+    <p class="section-sub" style="margin:1rem auto; text-align:center">
+      No busco un trabajo. Busco un problema que valga la pena resolver. Si tienes uno, cuéntamelo.
+    </p>
+
+    <div class="contact-card fade-in">
+      <div class="availability">Disponible para nuevas oportunidades</div>
+
+      <div class="contact-info">
+        <div class="contact-line">
+          <span>ubicación</span>
+          <span>Ciudad de México, México</span>
+        </div>
+        <div class="contact-line">
+          <span>perfil</span>
+          <span>linkedin.com/in/claudiosequrafajardo</span>
+        </div>
+        <div class="contact-line">
+          <span>código</span>
+          <span>github.com/claudiosequra</span>
+        </div>
+        <div class="contact-line">
+          <span>sectores</span>
+          <span>Seguros · Banca · Logística · Fintech</span>
+        </div>
+      </div>
+
+      <a href="mailto:claudio@example.com" class="btn-primary" style="width:100%; text-align:center; display:block">
+        Iniciar conversación →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 Jorge Claudio Segura Fajardo · CDMX</div>
+  <div class="footer-links">
+    <a href="#mvps">Proyectos</a>
+    <a href="#filosofia">Filosofía</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Stagger children on visible
+  document.querySelectorAll('.philosophy-grid, .mvp-grid, .hero-stats, .tools-grid').forEach(grid => {
+    const children = grid.querySelectorAll('.pillar, .mvp-card, .stat-card, .tool-group');
+    const gridObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          children.forEach((child, i) => {
+            setTimeout(() => {
+              child.style.opacity = '1';
+              child.style.transform = 'translateY(0)';
+            }, i * 80);
+          });
+        }
+      });
+    }, { threshold: 0.1 });
+
+    children.forEach(child => {
+      child.style.opacity = '0';
+      child.style.transform = 'translateY(20px)';
+      child.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+
+    gridObserver.observe(grid);
+  });
+</script>
+
+</body>
+</html>
